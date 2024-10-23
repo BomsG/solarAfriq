@@ -25,7 +25,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   return (
     <div className="relative w-full mx-auto ">
       {/* Image Display */}
-      <div className="relative w-full h-[500px] overflow-hidden">
+      <div className="relative w-full h-[300px] md:h-[500px] overflow-hidden">
         {images.map((image, index) => (
           <div
             key={index}
@@ -38,7 +38,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
                 src={image.src}
                 alt={image.alt}
                 fill
-                className="object-cover rounded-xl"
+                className="object-cover rounded-xl "
               />
             )}
           </div>

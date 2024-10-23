@@ -1,5 +1,4 @@
-// CartPage.tsx
-"use client"; // Ensure this is at the top
+"use client"; 
 
 import React from 'react';
 import Nav from '../components/Nav';
@@ -30,7 +29,7 @@ const CartPage: React.FC = () => {
                   <h2 className="text-xl font-semibold">{item.name}</h2>
                   <p>Price: ${item.price}</p>
                   <p>Quantity: {item.quantity}</p> {/* Display quantity */}
-                  <Image src={item.image.src} alt={item.name} className="w-full h-[200px] object-cover" />
+                  <Image src={item.image.src} alt={item.name} className="w-full h-[200px] object-cover" width={100} height={100}/>
                 </div>
                 <div className="flex items-center">
                   <button

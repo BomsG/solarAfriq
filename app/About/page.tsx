@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import teamImage from '../images/image3.jpg'; // Replace with your team image
-import vision from '../images/image4.jpg'; // Replace with your team image
+import teamImage from '../images/image3.jpg'; 
+import vision from '../images/image4.jpg'; 
 // import Nav from '../components/Nav';
 // import { useCart } from '../components/CartContext'; // Import the CartContext
 import Footer from '../components/Footer';
@@ -18,12 +18,9 @@ const AboutUs: React.FC = () => {
         <Nav2 />
       {/* <Nav cartCount={cart.length} /> Pass cart count to Nav */}
       <div className="container mx-auto py-16 px-6 sm:px-12 lg:px-24">
-        {/* Section Title */}
         <h1 className="text-[60px]  mb-8 leading-[80px]">
         Pioneering sustainable <br/> solar solutions worldwid
         </h1>
-
-        {/* About Section */}
         <div className="flex flex-col lg:flex-row items-center mb-12 mt-5">
           <div className="lg:w-1/2 lg:pl-8 mb-20">
             <p className="text-lg leading-relaxed text-gray-700 mb-6">

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import Image, { StaticImageData } from "next/image"; // Ensure this is imported
-import { motion } from "framer-motion"; // Import Framer Motion
+import Image, { StaticImageData } from "next/image"; 
+import { motion } from "framer-motion"; 
 import fx from "../images/image_fx_.jpg";
 import comm from "../images/commercial-solar.jpg";
 import consult from "../images/consult.jpg";
@@ -45,7 +45,7 @@ const services: Service[] = [
 ];
 
 const Services: React.FC = () => {
-  // Manage the active service state
+  
   const [activeService, setActiveService] = useState<Service>(services[0]);
 
   return (

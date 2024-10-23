@@ -13,7 +13,7 @@ const ProductCom = () => {
   ];
 
   return (
-    <div className='px-[150px]'>
+    <div className='px-10 md:px-[150px]'>
       <Carousel images={images} />
     </div>
   );

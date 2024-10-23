@@ -20,14 +20,6 @@ import hero from "./images/hero2.jpg"
 
 const page = () => {
   const { cart } = useCart();
-  const router = useRouter();
-
-  // Function to navigate to the cart page
-  // const viewCart = () => {
-  //   router.push('/cart'); // Redirect to cart page
-  // };
-
-  // const cartItemCount = 0;
   return (
     <div className="">
       <section className="relative h-[100vh]">
@@ -37,14 +29,14 @@ const page = () => {
           className="h-[100vh] w-full absolute z-0"
         />
         <div className="absolute top-0 left-0 h-[100vh] w-full bg-black opacity-50 z-10"></div>
-        <div className="relative z-20 px-[150px]">
+        <div className="relative z-20 px-10 md:px-[150px]">
         <Nav cartCount={cart.length}/> {/* Pass cart item count to Nav */}
           <div className="flex justify-between">
-            <div className="text-white mt-[60px] w-[70%]">
-              <h1 className="text-[70px] font-semibold leading-[1.3]">
+            <div className="text-white mt-[60px] w-full md:w-[70%]">
+              <h1 className="text-[50px] md:text-[70px] font-semibold leading-[1.3]">
                 Innovative solar solutions for sustainable living
               </h1>
-              <p className="text-[18px] w-[65%] mt-3">
+              <p className="text-[16px] md:text-[18px] w-full md:w-[65%] mt-3">
                 We&apos;re committed to respecting our environment, sustaining our communities, investing in our team and growing shareholder value.
               </p>
               <div className="flex gap-5 items-center mt-20">
