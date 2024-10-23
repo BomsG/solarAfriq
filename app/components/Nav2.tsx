@@ -1,4 +1,5 @@
 import Image from "next/image";
+import logo from "../images/Logo.png" 
 import React from "react";
 import Link from "next/link";
 import { FaShoppingCart } from 'react-icons/fa';  // For cart icon with badge
@@ -34,7 +35,7 @@ const Nav = () => {
           {/* Logo */}
           <Link href="/">
             <Image
-              src={require("../images/Logo.png")}
+              src={logo}
               alt="logo"
               className="w-[150px]"
             />

@@ -5,33 +5,34 @@ import Nav from "./components/Nav";
 import { FaArrowRight } from "react-icons/fa6";
 import Services from "./components/Services";
 import Reach from "./components/Reach";
-import Products from "./components/Products";
+// import Products from "./components/Products";
 import ProductCom from "./components/ProductCom";
 import World from "./components/World";
 import AboutComp from "./components/AboutComp";
 import Review from "./components/Review";
-import Gallery from "./components/Gallery";
+// import Gallery from "./components/Gallery";
 import Footer from "./components/Footer";
 import { useCart } from './components/CartContext';
 import { useRouter } from "next/navigation";
+import hero from "./images/hero2.jpg"
 
 
 
 const page = () => {
-  const { cart, addToCart } = useCart();
+  const { cart } = useCart();
   const router = useRouter();
 
   // Function to navigate to the cart page
-  const viewCart = () => {
-    router.push('/cart'); // Redirect to cart page
-  };
+  // const viewCart = () => {
+  //   router.push('/cart'); // Redirect to cart page
+  // };
 
-  const cartItemCount = 0;
+  // const cartItemCount = 0;
   return (
     <div className="">
       <section className="relative h-[100vh]">
         <Image
-          src={require("../app/images/hero2.jpg")}
+          src={hero}
           alt="hero"
           className="h-[100vh] w-full absolute z-0"
         />
@@ -44,7 +45,7 @@ const page = () => {
                 Innovative solar solutions for sustainable living
               </h1>
               <p className="text-[18px] w-[65%] mt-3">
-                We're committed to respecting our environment, sustaining our communities, investing in our team and growing shareholder value.
+                We&apos;re committed to respecting our environment, sustaining our communities, investing in our team and growing shareholder value.
               </p>
               <div className="flex gap-5 items-center mt-20">
                 <button className="bg-white text-black rounded-xl px-5 py-2 text-[16px] font-semibold flex items-center gap-2">

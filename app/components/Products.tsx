@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import comm from '../images/commercial-solar.jpg'
-import { Carousel } from "@material-tailwind/react";
+// import { Carousel } from "@material-tailwind/react";
 const Products = () => {
   return (
     <div className='flex justify-center mt-10'>

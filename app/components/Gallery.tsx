@@ -9,9 +9,9 @@ import hero5 from '../images/hero5.jpg'; // Example image
 import { FaArrowRight } from "react-icons/fa6";
 
 const Gallery: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState(hero);
+  // const [selectedImage, setSelectedImage] = useState(hero);
 
-  const images = [hero, hero2, hero3, hero4, hero5]; 
+  // const images = [hero, hero2, hero3, hero4, hero5]; 
 
   return (
     <div className='flex gap-5 bg-gray-50 px-[100px]'>

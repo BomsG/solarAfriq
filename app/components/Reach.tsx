@@ -1,26 +1,6 @@
 "use client"
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-const Counter = ({ target }: { target: number }) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let start = 0;
-    const end = target;
-    if (start === end) return;
-
-    let incrementTime = Math.abs(Math.floor(2000 / end)); // 2 seconds total duration
-    const timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start === end) clearInterval(timer);
-    }, incrementTime);
-
-    return () => clearInterval(timer); // Cleanup on unmount
-  }, [target]);
-
-  return <span>{count}</span>;
-};
 
 const StatsSection = () => {
   return (
