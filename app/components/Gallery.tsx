@@ -1,10 +1,9 @@
 "use client"
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import hero from '../images/hero2.jpg'; // Example image
 import hero2 from '../images/hero.jpg'; // Example image
-import hero3 from '../images/hero3.jpg'; // Example image
-import hero4 from '../images/hero4.jpg'; // Example image
+
 import hero5 from '../images/hero5.jpg'; // Example image
 import { FaArrowRight } from "react-icons/fa6";
 
