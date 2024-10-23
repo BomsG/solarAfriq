@@ -1,20 +1,8 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import { Poppins, Inter, Open_Sans, Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-
-// const geistSans = localFont({
-//   src: "./fonts/GeistVF.woff",
-//   variable: "--font-geist-sans",
-//   weight: "100 900",
-// });
-// const geistMono = localFont({
-//   src: "./fonts/GeistMonoVF.woff",
-//   variable: "--font-geist-mono",
-//   weight: "100 900",
-// });
-
-// const inter = Poppins({ subsets: ['latin'] })
+import { CartProvider } from './components/CartContext';
+import ShapeAnimation from "./components/PageWrapper"; // Assuming PageWrapper contains ShapeAnimation
 
 const pjSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -27,7 +15,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${pjSans.className} antialiased`}>{children}</body>
+      <body className={` ${pjSans.className} antialiased`}>
+        {/* ShapeAnimation is rendered once for the whole layout */}
+        <ShapeAnimation /> 
+        
+        {/* Wrap children in CartProvider */}
+        <CartProvider>
+          {children}
+        </CartProvider>
+      </body>
     </html>
   );
 }
