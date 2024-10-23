@@ -2,7 +2,7 @@
 "use client"; // Ensure this is at the top if you are using hooks
 
 import React from 'react';
-import Nav from '../components/Nav';
+// import Nav from '../components/Nav';
 import Image, { StaticImageData } from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCart } from '../components/CartContext'; // Ensure this is correctly imported
@@ -21,7 +21,7 @@ import image12 from "../images/maintain.jpg";
 import Nav2 from '../components/Nav2'
 import Footer from '../components/Footer';
 import Link from 'next/link';
-import vision from '../images/image4.jpg';
+// import vision from '../images/image4.jpg';
 
 interface Product {
   id: number;
@@ -47,7 +47,7 @@ const products: Product[] = [
 
 const ProductPage: React.FC = () => {
   const router = useRouter();
-  const { addToCart, cart } = useCart(); // Use the context
+  const { addToCart } = useCart(); // Use the context
 
   // Function to navigate to the cart page
   const viewCart = () => {

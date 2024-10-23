@@ -50,7 +50,7 @@ const Values = () => {
         <h2 className='text-[55px] py-5 text-center'>The values that shape <br/><span className='text-green-500'>everything we do</span></h2>
         <div className='grid grid-cols-3 gap-5 mt-10'>
             {item.map((item)=>(
-                <div key={item.id} className='border-2   px-10 py-5'>
+                <div key={item.id} className='border-2 hover:bg-green-500 hover:text-white  px-10 py-5'>
                     <item.icon size={30}/>
                     <h1 className='text-2xl my-5'>{item.name}</h1>
                     <p>{item.para}</p>

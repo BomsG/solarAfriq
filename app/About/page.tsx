@@ -2,10 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import teamImage from '../images/image3.jpg'; // Replace with your team image
 import vision from '../images/image4.jpg'; // Replace with your team image
-import { FaSolarPanel, FaHandsHelping, FaLeaf, FaLightbulb } from 'react-icons/fa';
-import Nav from '../components/Nav';
-import { useCart } from '../components/CartContext'; // Import the CartContext
-import Products from '../components/Products';
+// import Nav from '../components/Nav';
+// import { useCart } from '../components/CartContext'; // Import the CartContext
 import Footer from '../components/Footer';
 import Services from '../components/Services';
 import { FaArrowRight } from "react-icons/fa6";

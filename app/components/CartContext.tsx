@@ -1,7 +1,7 @@
 // context/CartContext.tsx
 "use client";
 import React, { createContext, useContext, useState } from "react";
-import Image, { StaticImageData } from "next/image";
+// import Image, { StaticImageData } from "next/image";
 
 // The product type for listing purposes (without quantity)
 interface Product {

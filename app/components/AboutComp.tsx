@@ -1,5 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import img from "../images/image1.jpg"
 
 const AboutComp = () => {
   return (
@@ -10,9 +12,9 @@ const AboutComp = () => {
                 <div
                     className="w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last">
                     <div className="pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex">
-                        <img className=" rounded-xl object-cover" src="https://pagedone.io/asset/uploads/1717741205.png" alt="about Us image" />
+                        <Image className=" rounded-xl object-cover" src={img} alt="about Us image" />
                     </div>
-                    <img className="sm:ml-0 ml-auto rounded-xl object-cover" src="https://pagedone.io/asset/uploads/1717741215.png"
+                    <Image className="sm:ml-0 ml-auto rounded-xl object-cover" src={img}
                         alt="about Us image" />
                 </div>
                 <div className="w-full flex-col justify-center lg:items-start items-center gap-10 inline-flex">
@@ -22,7 +24,7 @@ const AboutComp = () => {
                                 className="text-gray-900 text-4xl font-bold font-manrope leading-normal lg:text-start text-center">
                                 Energizing Our Installations for a Brighter Future</h2>
                             <p className="text-gray-500 text-base font-normal leading-relaxed lg:text-start text-center">
-                            Every solar project we've undertaken has been a collaborative effort, where each person involved has contributed to shaping a sustainable future. Together, we've not only installed solar solutions but also built lasting relationships that illuminate our journey toward a greener, brighter world. These connections define our success and drive our mission forward.</p>
+                            Every solar project we&apos;ve undertaken has been a collaborative effort, where each person involved has contributed to shaping a sustainable future. Together, we&apos;ve not only installed solar solutions but also built lasting relationships that illuminate our journey toward a greener, brighter world. These connections define our success and drive our mission forward.</p>
                         </div>
                         <div className="w-full lg:justify-start justify-center items-center sm:gap-10 gap-5 inline-flex">
                             <div className="flex-col justify-start items-start inline-flex">

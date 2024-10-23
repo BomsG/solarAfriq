@@ -4,6 +4,7 @@
 import React from 'react';
 import Nav from '../components/Nav';
 import { useCart } from '../components/CartContext';
+import Image from 'next/image';
 
 const CartPage: React.FC = () => {
   const { cart, removeFromCart, increaseQuantity, decreaseQuantity } = useCart(); // Use the context
@@ -29,7 +30,7 @@ const CartPage: React.FC = () => {
                   <h2 className="text-xl font-semibold">{item.name}</h2>
                   <p>Price: ${item.price}</p>
                   <p>Quantity: {item.quantity}</p> {/* Display quantity */}
-                  <img src={item.image.src} alt={item.name} className="w-full h-[200px] object-cover" />
+                  <Image src={item.image.src} alt={item.name} className="w-full h-[200px] object-cover" />
                 </div>
                 <div className="flex items-center">
                   <button
