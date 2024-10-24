@@ -3,6 +3,7 @@
 import { useCart } from '@/rest/hooks/useCart';
 // import Link from 'next/link';
 import { BsTrash2 } from 'react-icons/bs';
+import Button from '../components/atoms/button';
 
 export default function CartPage() {
   const { cart, removeFromCart, itemCount } = useCart();
@@ -114,9 +115,11 @@ export default function CartPage() {
         </div>
 
         {/* Confirm Button */}
-        <button className='w-full mt-6 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors'>
+        {/* <button className='w-full mt-6 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition-colors'>
           Confirm order
-        </button>
+        </button> */}
+
+        <Button content='Confirm order' />
       </div>
     </div>
   );
