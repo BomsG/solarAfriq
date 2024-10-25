@@ -43,6 +43,11 @@ export default function Nav() {
       href: '/contact',
       title: 'Contact',
     },
+    {
+      id: 5,
+      href: '/about2',
+      title: 'Fake About',
+    },
   ];
 
   return (
