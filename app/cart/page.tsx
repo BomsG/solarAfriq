@@ -4,9 +4,12 @@ import { useCart } from '@/rest/hooks/useCart';
 // import Link from 'next/link';
 import { BsTrash2 } from 'react-icons/bs';
 import Button from '../components/atoms/button';
+import Image from 'next/image';
 
 export default function CartPage() {
   const { cart, removeFromCart, itemCount } = useCart();
+  // const totalAmount = cart.reduce((total, item) => total + item.price * item.quantity, 0); // Calculate total
+  // const totalItems = cart.reduce((total, item) => total + item.quantity, 0); // Calculate total items
   return (
     <div className='containe mx-auto '>
       <div className='h-[120px] bg-black'></div>
@@ -20,7 +23,9 @@ export default function CartPage() {
           cart.map((item) => (
             <div key={item.id}>
               <div className='flex items-start py-4 border-b'>
-                <div className='w-16 h-16 bg-gray-200 rounded-md mr-4'></div>
+                <div className='w-16 h-16 bg-gray-200 rounded-md mr-4'>
+                  <Image src={item.image} alt="img" />
+                </div>
                 <div className='flex-grow'>
                   <div className='flex justify-between items-start'>
                     <div>
