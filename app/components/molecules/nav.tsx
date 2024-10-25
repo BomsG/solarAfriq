@@ -47,7 +47,7 @@ export default function Nav() {
 
   return (
     // <section className='w-full h-[100px] absolute top-0 left-0 z-[99] '>
-    <section className='w-full absolute z-[99] py-6'>
+    <section className='w-full absolute z-[99] py-6 px-5'>
       {/* <div className='absolute top-0 left-0 h-full bg-gradient-to-b from-black opacity-40 z0 blur-sm'></div> */}
       {/* <div className='flex justify-between items-center'>
         <Link href='/'>
@@ -71,7 +71,7 @@ export default function Nav() {
         </div>
         <button
           type='button'
-          className='flex-1 inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg min-[1000px]:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
+          className=' flex-1 inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg min-[1000px]:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
           onClick={() => setOpenMenu(!openMenu)}
           ref={ref}
         >

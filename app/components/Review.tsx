@@ -258,7 +258,7 @@ const Review = () => {
                         </div>
                         <p className="font-normal text-lg leading-8 text-gray-400">Nov 01, 2023</p>
                     </div>
-                    <p className="font-normal text-lg leading-8 text-gray-400 max-xl:text-justify">One of the standout features of Pagedone is its intuitive and user-friendly interface. Navigating through the system feels natural, and the layout makes it easy to locate and utilize various design elements. This is particularly beneficial for designers looking to streamline their workflow.</p>
+                    <p className="font-normal text-lg leading-8 text-gray-400 max-xl:text-justify">One of the standout features of Solar Afriq is its intuitive and user-friendly platform. Navigating through the product range is straightforward, making it easy for customers to find the right solar equipment and services. The layout is designed to simplify the process for both beginners and experts, ensuring a smooth experience in selecting and customizing solar solutions to meet specific energy needs. This streamlined approach helps customers make informed decisions quickly and confidently.</p>
                 </div>
                 <div className="pt-8 max-xl:max-w-2xl max-xl:mx-auto">
                     <div className="flex items-center gap-3 mb-4">
@@ -323,8 +323,7 @@ const Review = () => {
                             </defs>
                         </svg>
                     </div>
-                    <h3 className="font-manrope font-semibold text-xl sm:text-2xl leading-9 text-black mb-6">Pagedone&apos;s design system seamlessly bridges the gap between designers and developers!
-                    </h3>
+                
                     <div className="flex sm:items-center flex-col min-[400px]:flex-row justify-between gap-5 mb-4">
                         <div className="flex items-center gap-3">
                             <Image src={img} alt="Robert image" className="w-8 h-8 rounded-full object-cover" />
@@ -332,7 +331,7 @@ const Review = () => {
                         </div>
                         <p className="font-normal text-lg leading-8 text-gray-400">Nov 01, 2023</p>
                     </div>
-                    <p className="font-normal text-lg leading-8 text-gray-400 max-xl:text-justify">Pagedone doesn&apos;t disappoint when it comes to the variety and richness of its design components. From pre-built templates to customizable elements, the system caters to both beginners and seasoned designers. The extensive library ensures a diverse range of options to bring creative visions to life.</p>
+                    <p className="font-normal text-lg leading-8 text-gray-400 max-xl:text-justify">Solar Afriq impresses with it&apos;s extensive range of solar equipment and installation solutions, designed to meet the needs of both newcomers and seasoned solar enthusiasts. From reliable pre-designed kits to fully customizable systems, Solar Afriq offers an impressive selection that caters to residential, commercial, and industrial needs. Their comprehensive inventory makes it easy for customers to find the ideal setup to bring their energy goals to life while supporting sustainability.</p>
                 </div>
             </div>
         </div>

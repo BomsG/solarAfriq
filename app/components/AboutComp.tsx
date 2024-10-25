@@ -1,17 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import consult from "../images/consult.jpg"
 import img from '../images/image1.jpg';
 
 const AboutComp = () => {
   return (
     <div>
-      <section className='py-24 relative px-[150px]'>
+      <section className=' relative px-5 md:px-[150px]'>
         <div className='w-full max-w-7xl px-4 md:px-5 lg:px-5 mx-auto'>
           <div className='w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1'>
             <div className='w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last'>
               <div className='pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex'>
-                <Image className=' rounded-xl object-cover' src={img} alt='about Us image' />
+                <Image className=' rounded-xl object-cover' src={consult} alt='about Us image' />
               </div>
               <Image
                 className='sm:ml-0 ml-auto rounded-xl object-cover'

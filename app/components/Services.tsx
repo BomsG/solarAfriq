@@ -52,11 +52,13 @@ const Services: React.FC = () => {
 
   return (
     <>
-      <h1 className='text-center mt-20 mb-10 text-[18px] sm:text-[30px] md:text-[40px] font-bold leading-snug '>
-        We offer <span className='text-green-500'>innovative</span> <br /> solutions
+      <h1 className="text-center mt-10 mb-5 text-2xl sm:text-3xl md:text-4xl font-bold leading-snug">
+        We offer <span className="text-green-500">innovative</span> <br /> solutions
       </h1>
-      <div className='flex justify-between items-center px-[150px]'>
-        <div className='w-1/2 p-5'>
+      
+      <div className="flex flex-col-reverse md:flex-row justify-between items-center px-5 sm:px-10 lg:px-20">
+        {/* Image Display Section */}
+        <div className="w-full md:w-1/2 p-3 md:p-5 md:flex justify-center items-center hidden">
           <motion.div
             key={activeService.id}
             initial={{ opacity: 0, scale: 0.9 }}
@@ -67,20 +69,19 @@ const Services: React.FC = () => {
             <Image
               src={activeService.image}
               alt={activeService.title}
-              className='w-full h-full object-cover mb-5 rounded-tr-[100px] rounded-bl-3xl'
-              layout='responsive'
+              className="w-full h-full object-cover mb-5 rounded-tr-[30px] sm:rounded-tr-[50px] lg:rounded-tr-[100px] rounded-bl-3xl"
+              layout="responsive"
               width={500}
               height={300}
             />
           </motion.div>
         </div>
-
-        {/* Service Titles */}
-        <div className='w-1/2 p-5'>
+        {/* Service Details Section */}
+        <div className="w-full md:w-1/2 p-3 md:p-5">
           {services.map((service) => (
-            <div key={service.id} className='mb-10'>
+            <div key={service.id} className="mb-6 md:mb-10">
               <h3
-                className={`text-[32px] cursor-pointer ${
+                className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold cursor-pointer ${
                   activeService.id === service.id ? 'text-black relative' : 'text-gray-500'
                 }`}
                 onClick={() => setActiveService(service)}
@@ -88,18 +89,17 @@ const Services: React.FC = () => {
                 {service.title}
                 {activeService.id === service.id && (
                   <>
-                    <span className='absolute -bottom-1 right-1/2 w-0 transition-all h-0.5 bg-green-500 origin-left animate-expand'></span>
-                    <span className='absolute -bottom-1 right-1/2 w-0 transition-all h-0.5 bg-green-500 origin-right animate-expand'></span>
+                    <span className="absolute -bottom-1 left-0 right-0 w-0 h-0.5 bg-green-500 animate-expand"></span>
                   </>
                 )}
               </h3>
               {activeService.id === service.id && (
                 <motion.p
-                  className='text-gray-600 mt-2'
-                  initial={{ opacity: 0 }} // Start hidden
-                  animate={{ opacity: 1 }} // Fade in
-                  exit={{ opacity: 0 }} // Fade out
-                  transition={{ duration: 0.3 }} // Duration of the fade
+                  className="text-gray-600 mt-2 text-sm sm:text-base lg:text-lg"
+                  initial={{ opacity: 0 }} 
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
                 >
                   {service.description}
                 </motion.p>
@@ -107,14 +107,34 @@ const Services: React.FC = () => {
             </div>
           ))}
         </div>
+        {/* Image Display Section */}
+        <div className="w-full md:w-1/2 p-3 md:p-5 blockjustify-center items-center md:hidden">
+          <motion.div
+            key={activeService.id}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Image
+              src={activeService.image}
+              alt={activeService.title}
+              className="w-full h-full object-cover mb-5 rounded-tr-[30px] sm:rounded-tr-[50px] lg:rounded-tr-[100px] rounded-bl-3xl"
+              layout="responsive"
+              width={500}
+              height={300}
+            />
+          </motion.div>
+        </div>
       </div>
+
       <style jsx>{`
         @keyframes expand {
           0% {
             width: 0;
           }
           100% {
-            width: 30%; /* Adjust the final width as needed */
+            width: 30%;
           }
         }
 

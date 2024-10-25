@@ -8,10 +8,10 @@ export default function Hero() {
       <div className='absolute top-0 left-0 h-[100vh] w-full bg-black opacity-50 z-10'></div>
       <Image src={hero} alt='hero' className='h-[100vh] w-full absolute z-0' />
 
-      <div className='relative h-full z-20 px-2 sm:px-10 md:px-[150px]'>
+      <div className='relative h-full z-20 px-5 sm:px-10 md:px-[150px]'>
         <div className='flex flex-col justify-center items-start h-full'>
           <div className='text-white w-full md:w-[70%]'>
-            <h1 className='text-[20px] min-[400px]:text-[30px] lg:text-[70px] font-semibold leading-[1.3]'>
+            <h1 className='text-[35px] min-[400px]:text-[35px] lg:text-[70px] font-semibold leading-[1.3]'>
               Innovative solar solutions for sustainable living
             </h1>
             <p className='text-[14px] sm:text-[16px] md:text-[18px] w-full lg:w-[65%] mt-3 font-light'>
