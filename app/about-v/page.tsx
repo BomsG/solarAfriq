@@ -1,24 +1,13 @@
-import React from 'react';
 import Image from 'next/image';
 import teamImage from '../images/image3.jpg';
 import vision from '../images/image4.jpg';
-// import Nav from '../components/Nav';
-// import Footer from '../components/Footer';
 import Services from '../components/Services';
 import { FaArrowRight } from 'react-icons/fa6';
 import Values from '../components/Values';
-// import Nav2 from '../components/Nav2';
-// import Nav from '../components/molecules/nav';
 
 const AboutUs: React.FC = () => {
-  //   const { cart } = useCart(); // Access cart from context
-
   return (
     <section className=''>
-      {/* <Nav2 /> */}
-      {/* <Nav /> */}
-      {/* <Nav cartCount={cart.length} /> Pass cart count to Nav */}
-
       <div className='h-[120px] bg-black'></div>
       <div className='container mx-auto py-16 px-6 sm:px-12 lg:px-24'>
         <h1 className='text-[60px]  mb-8 leading-[80px]'>

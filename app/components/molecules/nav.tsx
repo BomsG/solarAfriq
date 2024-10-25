@@ -34,6 +34,11 @@ export default function Nav() {
       title: 'About Us',
     },
     {
+      id: 23,
+      href: '/about-v',
+      title: 'About Us',
+    },
+    {
       id: 3,
       href: '/products',
       title: 'Products',
@@ -124,7 +129,7 @@ export default function Nav() {
         </div>
         <div className='flex-1 flex justify-end'>
           <div className=' flex gap-6 items-center'>
-            <Link href='/cart'>
+            <Link href='/cart-v'>
               <Cart count={itemCount} />
             </Link>
             <div className={`${openMenu ? 'hidden' : 'flex'} hidden min-[1000px]:flex `}>
