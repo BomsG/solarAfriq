@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../images/logo-clean.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 // import useOutsideClick from '@/rest/hooks/useOutsideClick';
 import Button from '../atoms/button';
@@ -22,6 +22,10 @@ export default function Nav() {
   const path = usePathname();
   // const ref = useOutsideClick(() => setOpenMenu(false));
   const { itemCount } = useCart();
+
+  useEffect(() => {
+    setOpenMenu(false);
+  }, [path]);
 
   const links: ListItem[] = [
     {

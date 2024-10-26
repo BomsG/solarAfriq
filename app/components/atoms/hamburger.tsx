@@ -1,5 +1,8 @@
-import { useState } from 'react';
+'use client';
+
+import { useEffect, useState } from 'react';
 import { MouseEventHandler } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function Hamburger({
   onClick,
@@ -7,6 +10,11 @@ export default function Hamburger({
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 }) {
   const [isActive, setIsActive] = useState(false);
+  const path = usePathname();
+
+  useEffect(() => {
+    setIsActive(false);
+  }, [path]);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setIsActive(!isActive); // Toggle active state
