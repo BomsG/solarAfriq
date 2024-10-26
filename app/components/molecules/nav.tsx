@@ -5,11 +5,11 @@ import Link from 'next/link';
 import logo from '../../images/logo-clean.png';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-import useOutsideClick from '@/rest/hooks/useOutsideClick';
+// import useOutsideClick from '@/rest/hooks/useOutsideClick';
 import Button from '../atoms/button';
 import Cart from '../atoms/cart';
 import { useCart } from '@/rest/hooks/useCart';
-import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+import Hamburger from '../atoms/hamburger';
 
 interface ListItem {
   id: number;
@@ -20,7 +20,7 @@ interface ListItem {
 export default function Nav() {
   const [openMenu, setOpenMenu] = useState(false);
   const path = usePathname();
-  const ref = useOutsideClick(() => setOpenMenu(false));
+  // const ref = useOutsideClick(() => setOpenMenu(false));
   const { itemCount } = useCart();
 
   const links: ListItem[] = [
@@ -47,23 +47,7 @@ export default function Nav() {
   ];
 
   return (
-    // <section className='w-full h-[100px] absolute top-0 left-0 z-[99] '>
     <section className='w-full absolute z-[99] py-6 px-5'>
-      {/* <div className='absolute top-0 left-0 h-full bg-gradient-to-b from-black opacity-40 z0 blur-sm'></div> */}
-      {/* <div className='flex justify-between items-center'>
-        <Link href='/'>
-          <Image src={logo} alt='logo' className='w-[150px]' />
-        </Link>
-
-        <ul className='flex gap-5 items-center'>
-          {li.map((item) => (
-            <Link key={item.id} href={item.link}>
-              <li className={`font-semibold text-[17px] cursor-pointer`}>{item.list}</li>
-            </Link>
-          ))}
-        </ul>
-      </div> */}
-
       <div className='max-w-screenxl flex  items-center justify-between mx-aut  sm:px-10 md:px-[150px]'>
         <div className='flex-1'>
           <Link href='/'>
@@ -72,20 +56,16 @@ export default function Nav() {
         </div>
         <div className='flex-1 flex justify-center'>
           <div
-            className={`${
-              !openMenu ? 'hidden' : ''
-            } w-full min-[1000px]:w-max min-[1000px]:block absolute top-12 pr-8 min-[1000px]:static`}
+            className={`w-full min-[1000px]:w-max min-[1000px]:block absolute top-12 pr-8 min-[1000px]:static`}
           >
-            <ul className='font-medium flex flex-col p-4 min-[1000px]:p-0 mt-4 border border-gray-100 rounded-lg min-[1000px]:flex-row min-[1000px]:space-x-8 rtl:space-x-reverse min-[1000px]:mt-0 min-[1000px]:border-0'>
+            <ul className='font-medium hidden min-[1000px]:flex'>
               {links.map((link) => (
                 <li key={link.id}>
                   <Link href={link.href}>
                     <div
-                      className={`block py-2 px-3 ${
-                        path === link.href
-                          ? 'text-white bg-color-orange min-[1000px]:text-color-orange'
-                          : 'text-gray-900 hover:bg-gray-100 min-[1000px]:hover:bg-transparent min-[1000px]:hover:text-gray-400'
-                      } rounded min-[1000px]:bg-transparent min-[1000px]:p-0 dark:text-white min-[1000px]:dark:text-color-orange`}
+                      className={`block py-2 mx-3 relative w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-500 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center  ${
+                        path === link.href ? 'text-green-500' : 'text-gray-200'
+                      }`}
                     >
                       {link.title}
                     </div>
@@ -95,27 +75,43 @@ export default function Nav() {
             </ul>
           </div>
         </div>
-        <div className='flex-1 flex justify-end'>
+        <div className='flex-1 flex justify-end gap-2'>
           <div className=' flex gap-6 items-center'>
-            <Link href='/cart'>
+            <Link href='/cart' className='hover:scale-105'>
               <Cart count={itemCount} />
             </Link>
-            <div className={`${openMenu ? 'hidden' : 'flex'} hidden min-[1000px]:flex `}>
+            <div className={`hidden min-[1000px]:flex `}>
               <Link href='/product'>
-                <Button content='Contact an Installer' />
+                <Button
+                  spanContent={<span className='min-[1000px]:text-[14px] '>Contact Installer</span>}
+                />
               </Link>
             </div>
           </div>
-          <div className='md:hidden'>
-            <button onClick={() => setOpenMenu(!openMenu)}>
-              {openMenu ? (
-                <FaTimes size={24} color="white"/>
-              ) : (
-                <FaBars size={24} color="white"/>
-              )}
-            </button>
+          <div className='min-[1000px]:hidden'>
+            <Hamburger onClick={() => setOpenMenu(!openMenu)} />
           </div>
         </div>
+
+        {openMenu && (
+          <div className='min-[1000px]:hidden absolute left-0 min-[200px]:top-24 min-[345px]:top-28 w-full bg-black h-screen pt-6'>
+            <ul className='font-medium hidde min-[1000px]:flex'>
+              {links.map((link) => (
+                <li key={link.id}>
+                  <Link href={link.href}>
+                    <div
+                      className={`block py-2 mx-3 relative w-fit after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-500 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center  ${
+                        path === link.href ? 'text-green-500' : 'text-gray-200'
+                      }`}
+                    >
+                      {link.title}
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
   );
