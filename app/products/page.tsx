@@ -59,16 +59,16 @@ const ProductPage: React.FC = () => {
       <div className='h-[120px] bg-black'></div>
       {/* <Nav cartCount={cart.length} textColor="black"/> Pass cart item count to Nav */}
       {/* <Nav2 /> */}
-      <div className='text-center mt-[100px] px-20'>
-        <h1 className='text-[55px] font-bold my-5'>Our Products</h1>
+      <div className='text-center mt-[100px] px-5 md:px-20'>
+        <h1 className='text-[35px] md:text-[55px] font-bold my-5'>Our Products</h1>
         <h2 className='text-[16px] '>
           Explore our range of high-quality solar products designed to help you harness the power of
-          the sun. <br /> From efficient solar panels and inverters to complete solar power kits and
-          storage batteries, <br /> we offer solutions tailored to residential, commercial, and
+          the sun. <br className='hidden md:block'/> From efficient solar panels and inverters to complete solar power kits and
+          storage batteries, <br className='hidden md:block'/> we offer solutions tailored to residential, commercial, and
           industrial needs.
         </h2>
       </div>
-      <div className='px-20 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-20'>
+      <div className='px-5 md:px-20 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-20'>
         {products.map((product) => (
           <div key={product.id} className=' rounded-lg  shadow-lg'>
             <Image

@@ -16,8 +16,8 @@ export default function CarouselSection() {
   return (
     <div className='mt-12 sm:mt-24'>
       <div className='text-center p-2 sm:px-10 md:px-[150px]'>
-        <h1 className='text-[18px] sm:text-[45px] md:text-[55px] font-bold leading-none'>
-          We are experts in the world of <br className='hidden md:block' />
+        <h1 className='text-[22px] sm:text-[45px] md:text-[55px] font-bold leading-11'>
+          We are experts in the world of <br className='' />
           <span className='text-green-500'>solar energy</span>
         </h1>
         <p className='mb-2 sm:mb-10 text-[14px] md:text-xl font- mt-5'>
