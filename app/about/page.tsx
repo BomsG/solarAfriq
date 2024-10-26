@@ -50,11 +50,11 @@ const AboutUs: React.FC = () => {
               A world powered by <br />
               <span className='text-green-500'>solar energy</span>
             </h2>
-            <p className='text-center lg:text-left'>
-              Lorem ipsum dolor sit amet consectetur at lacus erat lacus <br />
+            <p className='text-center lg:text-left px-5 md:px-0'>
+              Lorem ipsum dolor sit amet consectetur at lacus erat lacus <br className='hidden md:block'/>
               magna ligula porta nulla volutpat posuere in sed ultrices
-              <br /> enim ad minim veniam, quis nostrud exercitation
-              <br /> ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              <br className='hidden md:block'/> enim ad minim veniam, quis nostrud exercitation
+              <br className='hidden md:block'/> ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
           </div>
         </div>
