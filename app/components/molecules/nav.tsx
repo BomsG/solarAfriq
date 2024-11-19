@@ -48,6 +48,11 @@ export default function Nav() {
       href: '/contact',
       title: 'Contact',
     },
+    {
+      id: 5,
+      href: '/installer/form',
+      title: 'Technician',
+    },
   ];
 
   return (

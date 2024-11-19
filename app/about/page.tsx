@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import teamImage from '../images/image3.jpg';
-import vision from '../images/image4.jpg';
+import teamImage from '../images/real2.jpg';
+import vision from '../images/real4.jpg';
 import Services from '../components/Services';
 import { FaArrowRight } from 'react-icons/fa6';
 import Values from '../components/Values';
@@ -15,11 +15,9 @@ const AboutUs: React.FC = () => {
           Pioneering sustainable <br /> solar solutions worldwide
         </h1>
         <div className='flex flex-col lg:flex-row items-center mb-12 mt-5'>
-          <div className='lg:w-1/2 lg:pl-8 mb-20'>
+          <div className='lg:w-1/2 lg:pl-0 mb-20'>
             <p className='text-lg leading-relaxed text-gray-700 mb-6'>
-              We envision a world where solar energy is a primary source of power for all, creating
-              a sustainable future for generations to come. Our goal is to lead the renewable energy
-              transition, fostering innovation in every project we undertake.
+            Solar Africa is a premier digital marketplace designed to address the growing demand for solar energy across Africa by delivering high-quality services. The platform connects skilled solar installers with Photovoltaic (PV) installation contracts, while also offering customers access to a wide range of premium, durable solar installation materials. It also allows an individual to sign-up as an installer, view his or her installer dashboard, track service requests and view contact of clients he or she has been able to work with over time.
             </p>
             <Link href="/products">
             <button className='relative h-[50px] w-40 overflow-hidden shadow-xl px-3 text-black font-semibold rounded-full transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-green-500 before:transition-all before:duration-500 hover:text-white border hover:before:left-0 hover:before:w-full'>

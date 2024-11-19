@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import consult from "../images/consult.jpg"
-import img from '../images/image1.jpg';
+import consult from "../images/real5.jpg"
+import img from '../images/real6.jpg';
 
 const AboutComp = () => {
   return (
@@ -12,10 +12,10 @@ const AboutComp = () => {
           <div className='w-full justify-start items-center gap-12 grid lg:grid-cols-2 grid-cols-1'>
             <div className='w-full justify-center items-start gap-6 grid sm:grid-cols-2 grid-cols-1 lg:order-first order-last'>
               <div className='pt-24 lg:justify-center sm:justify-end justify-start items-start gap-2.5 flex'>
-                <Image className=' rounded-xl object-cover' src={consult} alt='about Us image' />
+                <Image className=' rounded-xl object-cover h-[300px]' src={consult} alt='about Us image' />
               </div>
               <Image
-                className='sm:ml-0 ml-auto rounded-xl object-cover'
+                className='sm:ml-0 ml-auto rounded-xl object-cover h-[300px]'
                 src={img}
                 alt='about Us image'
               />

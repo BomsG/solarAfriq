@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion } from 'framer-motion';
-import fx from '../images/image_fx_.jpg';
-import comm from '../images/commercial-solar.jpg';
-import consult from '../images/consult.jpg';
+import fx from '../images/real1.jpg';
+import comm from '../images/real4.jpg';
+import consult from '../images/real3.jpg';
 import maintain from '../images/maintain.jpg';
 
 // Define a type for the service
@@ -19,32 +19,25 @@ interface Service {
 const services: Service[] = [
   {
     id: 1,
-    title: 'Residential Solar',
+    title: 'Solar Engineering',
     description:
-      'Install solar panels at home and save energy costs. We provide tailored residential solar solutions that maximize energy efficiency and reduce your electricity bills.',
+      'Solar panel installation, repairs and maintenance services for domestic and industrial application.',
     image: fx,
   },
   {
     id: 2,
-    title: 'Commercial Solar',
+    title: 'Electrical Engineering',
     description:
-      'Solar solutions for commercial buildings and enterprises. Our commercial solar services are designed to meet the energy needs of businesses, delivering cost savings and sustainability.',
+      'Domestic and industrial wiring and installation work.',
     image: comm,
   },
   {
     id: 3,
-    title: 'Maintenance Services',
+    title: 'Retail & Logistics',
     description:
-      'We offer comprehensive solar maintenance services. We offer maintenance and monitoring services to ensure your solar systems operate at peak performance.',
+      'Technical Materials Procurement & Supply',
     image: maintain,
-  },
-  {
-    id: 4,
-    title: 'Consultation',
-    description:
-      "Our energy storage solutions help you store excess solar energy, allowing you to use it when the sun isn't shining.",
-    image: consult,
-  },
+  }
 ];
 
 const Services: React.FC = () => {

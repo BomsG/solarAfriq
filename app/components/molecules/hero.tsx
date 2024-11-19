@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import hero from '../../images/hero2.jpg';
+import Link from 'next/link';
 import ArrowRight from '../atoms/arrowRight';
 
 export default function Hero() {
@@ -19,12 +20,14 @@ export default function Hero() {
               investing in our team and growing shareholder value.
             </p>
             <div className='flex flex-wrap gap-5 items-center mt-20'>
+              <Link href="/installer">
               <button className='bg-white text-black rounded-xl px-5 py-2 text-[16px] font-semibold flex items-center gap-2'>
                 Meet installer
                 <span className='bg-green-500 p-2 rounded-full'>
                   <ArrowRight />
                 </span>
               </button>
+              </Link>
               <button className='text-[16px] font-semibold flex items-center gap-2 hover:aminate-bounce'>
                 Explore Products
                 <ArrowRight />
