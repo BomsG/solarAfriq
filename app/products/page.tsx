@@ -22,6 +22,7 @@ import image12 from '../images/maintain.jpg';
 // import Footer from '../components/Footer';
 import Link from 'next/link';
 import { useCart } from '@/rest/hooks/useCart';
+import PublicLayout from '../components/layout/publicLayout';
 // import vision from '../images/image4.jpg';
 
 interface Product {
@@ -55,56 +56,58 @@ const ProductPage: React.FC = () => {
   // };
 
   return (
-    <div className='containe mx-auto '>
-      <div className='h-[120px] bg-black'></div>
-      {/* <Nav cartCount={cart.length} textColor="black"/> Pass cart item count to Nav */}
-      {/* <Nav2 /> */}
-      <div className='text-center mt-[100px] px-5 md:px-20'>
-        <h1 className='text-[35px] md:text-[55px] font-bold my-5'>Our Products</h1>
-        <h2 className='text-[16px] '>
-          Explore our range of high-quality solar products designed to help you harness the power of
-          the sun. <br className='hidden md:block'/> From efficient solar panels and inverters to complete solar power kits and
-          storage batteries, <br className='hidden md:block'/> we offer solutions tailored to residential, commercial, and
-          industrial needs.
-        </h2>
-      </div>
-      <div className='px-5 md:px-20 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-20'>
-        {products.map((product) => (
-          <div key={product.id} className=' rounded-lg  shadow-lg'>
-            <Image
-              src={product.image}
-              alt={product.name}
-              className='mb-4 w-full h-[300px] object-cover rounded-lg'
-            />
-            <div className='p-4'>
-              <div className='flex justify-between items-center'>
-                <h2 className='text-xl font-semibold mb-2'>{product.name}</h2>
-                <p className='mb-2'>Price: ${product.price}</p>
+    <PublicLayout>
+      <div className='containe mx-auto '>
+        <div className='h-[120px] bg-black'></div>
+        {/* <Nav cartCount={cart.length} textColor="black"/> Pass cart item count to Nav */}
+        {/* <Nav2 /> */}
+        <div className='text-center mt-[100px] px-5 md:px-20'>
+          <h1 className='text-[35px] md:text-[55px] font-bold my-5'>Our Products</h1>
+          <h2 className='text-[16px] '>
+            Explore our range of high-quality solar products designed to help you harness the power
+            of the sun. <br className='hidden md:block' /> From efficient solar panels and inverters
+            to complete solar power kits and storage batteries, <br className='hidden md:block' />{' '}
+            we offer solutions tailored to residential, commercial, and industrial needs.
+          </h2>
+        </div>
+        <div className='px-5 md:px-20 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-20'>
+          {products.map((product) => (
+            <div key={product.id} className=' rounded-lg  shadow-lg'>
+              <Image
+                src={product.image}
+                alt={product.name}
+                className='mb-4 w-full h-[300px] object-cover rounded-lg'
+              />
+              <div className='p-4'>
+                <div className='flex justify-between items-center'>
+                  <h2 className='text-xl font-semibold mb-2'>{product.name}</h2>
+                  <p className='mb-2'>Price: ${product.price}</p>
+                </div>
+                <button
+                  className='bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-200 transition '
+                  onClick={() => addToCart(product)}
+                >
+                  Add to Cart
+                </button>
               </div>
-              <button
-                className='bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-200 transition '
-                onClick={() => addToCart(product)}
-              >
-                Add to Cart
-              </button>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className='text-center mt-10'>
-        <Link href='/Cart'>
-          <button
-            className='bg-black text-white px-6 py-3 mt-4 rounded-md hover:bg-green-200 transition'
-            // onClick={viewCart}
-          >
-            View Cart
-          </button>
-        </Link>
-      </div>
-      {/* <hr className='my-20' />
+        <div className='text-center mt-10'>
+          <Link href='/Cart'>
+            <button
+              className='bg-black text-white px-6 py-3 mt-4 rounded-md hover:bg-green-200 transition'
+              // onClick={viewCart}
+            >
+              View Cart
+            </button>
+          </Link>
+        </div>
+        {/* <hr className='my-20' />
       <Footer /> */}
-    </div>
+      </div>
+    </PublicLayout>
   );
 };
 
