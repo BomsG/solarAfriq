@@ -5,21 +5,24 @@ import Review from './components/Review';
 // import Footer from './components/Footer';
 import Hero from './components/molecules/hero';
 import CarouselSection from './components/molecules/carouselSection';
+import PublicLayout from './components/layout/publicLayout';
 
 export default function Home() {
   // const { cart } = useCart();
   return (
-    <div className='relative'>
-      <Hero />
-      <CarouselSection />
-      <hr className='my-10' />
-      <AboutComp />
-      <hr className='my-10' />
-      <Services />
-      <hr className='my-10' />
-      <World />
-      <hr className='mb-10' />
-      <Review />
-    </div>
+    <PublicLayout>
+      <div className='relative'>
+        <Hero />
+        <CarouselSection />
+        <hr className='my-10' />
+        <AboutComp />
+        <hr className='my-10' />
+        <Services />
+        <hr className='my-10' />
+        <World />
+        <hr className='mb-10' />
+        <Review />
+      </div>
+    </PublicLayout>
   );
 }

@@ -1,12 +1,11 @@
-"use client";
-import { usePathname } from 'next/navigation';
+'use client';
+
 import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
-import Nav from './components/molecules/nav';
-import Footer from './components/Footer';
 import CartProvider from '@/rest/context/CartContext';
-import ShapeAnimation from './components/PageWrapper'; 
-import Head from 'next/head'; 
+// import ShapeAnimation from './components/PageWrapper';
+import Head from 'next/head';
+import { AppContextProvider } from '@/rest/context';
 
 const pjSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -17,32 +16,41 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname(); // Get the current path
+  // const pathname = usePathname(); // Get the current path
 
-
-  const noLayoutPaths = ['/admin', '/admin/products', '/admin/orders', '/admin/users', '/installer/form'];
+  // const noLayoutPaths = [
+  //   '/admin',
+  //   '/admin/products',
+  //   '/admin/orders',
+  //   '/admin/users',
+  //   '/installer/form',
+  // ];
 
   // Check if the current path matches any of the paths where Nav and Footer should be hidden
-  const hideLayout = noLayoutPaths.some((path) => pathname.startsWith(path));
+  // const hideLayout = noLayoutPaths.some((path) => pathname.startsWith(path));
 
   return (
     <html lang='en'>
       <Head>
         <title>SolarAfriq</title>
-        <link rel="icon" href="/Logo.png" type="image/png" /> {/* Path to the logo in the public folder */}
-        <meta name="description" content="Manage your products, orders, and users efficiently with the SolarAfriq admin dashboard." />
+        <link rel='icon' href='/Logo.png' type='image/png' />
+        <meta
+          name='description'
+          content='Manage your products, orders, and users efficiently with the SolarAfriq'
+        />
       </Head>
-      <CartProvider>
-        <body className={` ${pjSans.className} antialiased`}>
-          {/* ShapeAnimation is rendered for the whole layout */}
-          <ShapeAnimation />
+      <AppContextProvider>
+        <CartProvider>
+          <body className={` ${pjSans.className} antialiased`}>
+            {/* ShapeAnimation is rendered for the whole layout */}
+            {/* <ShapeAnimation /> */}
 
-          {/* Conditionally render Nav and Footer */}
-          {!hideLayout && <Nav />}
-          {children}
-          {!hideLayout && <Footer />}
-        </body>
-      </CartProvider>
+            {/* <Nav /> */}
+            {children}
+            {/* <Footer /> */}
+          </body>
+        </CartProvider>
+      </AppContextProvider>
     </html>
   );
 }
