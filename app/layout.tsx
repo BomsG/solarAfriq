@@ -48,7 +48,7 @@ export default function RootLayout({
             {/* <ShapeAnimation /> */}
 
             {children}
-            <ToastContainer stacked position='top-center' />
+            <ToastContainer stacked position='top-center' autoClose={500} />
           </body>
         </CartProvider>
       </AppContextProvider>

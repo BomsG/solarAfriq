@@ -17,7 +17,7 @@ api.interceptors.request.use(
     if (SolarAfriqCookie in cookie) {
       if (!!cookie[SolarAfriqCookie]) {
         // config.headers['x-token'] = cookie[SolarAfriqCookie];
-        config.headers.Authorization = cookie[SolarAfriqCookie];
+        config.headers.Authorization = `Bearer ${cookie[SolarAfriqCookie]}`;
         // config.headers.Authorization = `Bearer ${assessTo}`;
       }
     }
