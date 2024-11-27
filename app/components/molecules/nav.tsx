@@ -43,14 +43,14 @@ export default function Nav() {
       href: '/products',
       title: 'Products',
     },
-    {
-      id: 4,
-      href: '/contact',
-      title: 'Contact',
-    },
+    // {
+    //   id: 4,
+    //   href: '/contact',
+    //   title: 'Contact',
+    // },
     {
       id: 5,
-      href: '/installer/form',
+      href: '/technician',
       title: 'Technician',
     },
   ];
