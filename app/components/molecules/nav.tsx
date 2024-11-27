@@ -56,7 +56,7 @@ export default function Nav() {
   ];
 
   return (
-    <section className='w-full absolute z-[99] py-6 px-5'>
+    <section className='w-full fixed top-0 left-0 z-[99] py-6 px-5 bg-black/80 backdrop-blur-sm'>
       <div className='max-w-screenxl flex  items-center justify-between mx-aut  sm:px-10 md:px-[150px]'>
         <div className='flex-1'>
           <Link href='/'>
