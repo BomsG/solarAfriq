@@ -20,17 +20,15 @@ const Technician: React.FC = () => {
       name: '',
       email: '',
       phone: '',
-      location: 'abia',
-      role: 'installer',
+      location: '',
+      role: '',
     },
+    enableReinitialize: true,
     onSubmit: async (values, { resetForm }) => {
-      //   console.log(values);
-      //   toast.success('clicked for fun');
       try {
         setLoading(true);
         const res = await api.post('/technician', values);
         toast.success(res?.data?.message);
-        // console.log(res);
         resetForm();
       } catch (error: any) {
         toast.error(error?.response?.data?.message);
@@ -47,6 +45,10 @@ const Technician: React.FC = () => {
           <div className='mx-auto max-w-xl border p-8 rounded-lg'>
             <form onSubmit={formik.handleSubmit}>
               <section className='flex flex-col gap-3 mb-8'>
+                <div className='flex flex-col mb-4'>
+                  <h2 className='font-bold text-lg'>Technician application form</h2>
+                  <p className='text-sm'>Fill this form and we&apos;ll get back to you shortly</p>
+                </div>
                 <TextField label='Name' name='name' formik={formik} />
                 <TextField label='Email' name='email' formik={formik} />
                 <PhoneNumberField label='Phone number' name='phone' formik={formik} />

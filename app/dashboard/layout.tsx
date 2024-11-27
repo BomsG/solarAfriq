@@ -1,14 +1,29 @@
+'use client';
+
 import { LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../images/logo-clean.png';
+import { useLayoutEffect } from 'react';
+import { useAuthContext } from '@/rest/context/auth';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 export default function DashLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const router = useRouter();
+  const { user, handleLogOut } = useAuthContext();
+
+  useLayoutEffect(() => {
+    if (!user) {
+      toast.error("You're not logged in. Redirecting...");
+      router.push('/login');
+    }
+  }, [user]);
   return (
     <div className='bg-gray-50'>
       <header className='sticky top- z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
@@ -24,7 +39,13 @@ export default function DashLayout({
               />
             </Link>
           </div>
-          <Button variant='ghost'>
+          <Button
+            variant='ghost'
+            onClick={() => {
+              handleLogOut();
+              router.push('/login');
+            }}
+          >
             <LogOut className='h-4 w-4' />
             <span className=''>Logout</span>
           </Button>

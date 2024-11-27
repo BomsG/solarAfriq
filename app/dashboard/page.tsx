@@ -2,7 +2,6 @@
 
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import Link from 'next/link';
-import useGetReq from '@/rest/hooks/useGetRequest';
 import { ReactNode } from 'react';
 import { BiCartDownload } from 'react-icons/bi';
 import { AiOutlineProduct } from 'react-icons/ai';
@@ -75,9 +74,9 @@ const tiles: DashboardTile[] = [
 ];
 
 export default function Dashboard() {
-  const { data } = useGetReq(`/technician`);
+  // const { data } = useGetReq(`/technician`);
 
-  console.log(data);
+  // console.log(data);
   // useEffect(() => {
   //   fetch('https://solar-afriq-api.onrender.com/product', {
   //     method: 'GET',
