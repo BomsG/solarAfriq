@@ -25,18 +25,15 @@ export default function Products() {
     id: pro._id,
     image: pro.imageUrl,
     name: pro.name,
-    // colour: pro.colour?.split(', '),
     colour: pro.colour?.map((col: { label: string }) => col.label),
     price: pro.price,
   }));
 
   const handleEdit = (id: string) => {
-    // console.log(id);
     setOpenEditProd(true);
     setShowId(id);
   };
   const handleDelete = (id: string, name: string) => {
-    // console.log(id);
     setOpenDeleteProd(true);
     setShowId(id);
     setShowName(name);
