@@ -6,7 +6,11 @@ import { StaticImageData } from 'next/image';
 export interface CartItem {
   id: number;
   name: string;
-  image: StaticImageData
+  image: StaticImageData;
+  price: number;
+  colour: string;
+  quantity: number;
+  total: number;
 }
 
 export interface CartContextType {
@@ -27,7 +31,13 @@ export default function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   const addToCart = (item: CartItem) => {
-    setCart((prevCart) => [...prevCart, item]);
+    setCart((prevCart) => {
+      const isItemInCart = prevCart.some((cartItem) => cartItem.id === item.id);
+      if (isItemInCart) {
+        return prevCart;
+      }
+      return [...prevCart, item];
+    });
   };
 
   const removeFromCart = (id: number) => {
