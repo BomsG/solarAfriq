@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 'use client';
 
 import React, { useState } from 'react';
@@ -22,10 +21,9 @@ export const PhoneNumberField = ({
 }) => {
   const [phoneValue, setPhoneValue] = useState('');
 
-  // const handlePhoneChange = (isValid: boolean, value: string, countryData: any) => {
-  const handlePhoneChange = (isValid: boolean, value: string) => {
+  const handlePhoneChange = (isValid: boolean, value: string, countryData: any) => {
     if (isValid) {
-      formik.setFieldValue(name, value);
+      formik.setFieldValue(name, `${countryData.dialCode}${value}`);
     }
     setPhoneValue(value);
   };
@@ -40,13 +38,15 @@ export const PhoneNumberField = ({
           <AiOutlinePhone />
         </div>
         <ReactIntlTelInput
-          preferredCountries={['ng', 'gh']}
+          preferredCountries={['ng', 'gh', 'na']}
           defaultCountry='ng'
           value={phoneValue}
           containerClassName={`intl-tel-input ${disabled && 'cursor-not-allowed'} block w-full`}
           inputClassName={`form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
           ${'ps-8'}`}
-          onPhoneNumberChange={(status, value) => handlePhoneChange(status, value)}
+          onPhoneNumberChange={(status, value, countryData) =>
+            handlePhoneChange(status, value, countryData)
+          }
           fieldId={name}
           disabled={disabled}
           style={{ ...style }}
