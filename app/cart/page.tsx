@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '@/rest/hooks/useCart';
 import { FaTrashAlt } from 'react-icons/fa';
 import Image from 'next/image';
@@ -37,6 +39,21 @@ export default function CartPage() {
     }, {})
   );
 
+  const calculateSubTotal = () => {
+    const total = cart.reduce((sum, item) => {
+      const quantity = quantities[item.id] ?? 1;
+      const price = parseFloat(item.price.toString().replace(/,/g, '')) || 0;
+
+      console.log(price);
+      return sum + price * quantity;
+    }, 0);
+    setSubTotal(total);
+  };
+
+  useEffect(() => {
+    calculateSubTotal();
+  }, [quantities, cart]);
+
   const handleQuantityChange = (id: number, newQuantity: number) => {
     setQuantities((prev) => ({
       ...prev,
@@ -55,10 +72,8 @@ export default function CartPage() {
     setOpenContact(true);
     const cartDetails = cart.map((item) => {
       const quantity = quantities[item.id] ?? 1;
-      const price = parseFloat(item.price.toString()) || 0;
+      // const price = parseFloat(item.price.toString()) || 0;
       const colour = selectedColours[item.id].toLowerCase() ?? '';
-
-      setSubTotal(price * quantity);
 
       return {
         productId: item.id,
@@ -104,7 +119,18 @@ export default function CartPage() {
 
         {!openContact && (
           <div className='max-w-lg mt-[90px] mx-auto p-6 bg-white border rounded-lg shadow'>
-            <h2 className='text-lg font-semibold mb-4'>Cart summary</h2>
+            <div className='flex justify-between items-center'>
+              <h2 className='text-lg font-semibold mb-4'>Cart summary</h2>
+              <div
+                className='text-sm text-blue-300 cursor-pointer'
+                onClick={() => {
+                  clearCart();
+                  router.push('/products');
+                }}
+              >
+                clear cart
+              </div>
+            </div>
 
             {itemCount === 0 ? (
               <p>Your cart is empty</p>
@@ -170,7 +196,7 @@ export default function CartPage() {
             <div className='my-6 space-y-3'>
               <div className='flex justify-between'>
                 <span className='text-gray-600'>Subtotal</span>
-                <span className='font-medium'>NGN{subTotal}</span>
+                <span className='font-medium'>₦{subTotal.toLocaleString()}</span>
               </div>
             </div>
 
