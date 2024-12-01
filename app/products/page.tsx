@@ -87,7 +87,7 @@ const ProductPage: React.FC = () => {
         <ShowProductModal openProd={openProd} setOpenProd={setOpenProd} data={mol} />
 
         <div className='text-center mt-10'>
-          <Link href='/Cart'>
+          <Link href='/cart'>
             <button
               className='bg-black text-white px-6 py-3 mt-4 rounded-md hover:bg-green-200 transition'
               // onClick={viewCart}

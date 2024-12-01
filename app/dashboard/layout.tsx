@@ -19,11 +19,16 @@ export default function DashLayout({
   const { user, handleLogOut } = useAuthContext();
 
   useLayoutEffect(() => {
-    if (!user) {
-      toast.error("You're not logged in. Redirecting...");
-      router.push('/login');
-    }
+    const dolop = async () => {
+      if (!user) {
+        toast.error("You're not logged in. Redirecting...");
+        router.push('/login');
+      }
+    };
+
+    dolop();
   }, [user]);
+
   return (
     <div className='bg-gray-50'>
       <header className='sticky top- z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
