@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../images/logo-clean.png';
-import { useLayoutEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthContext } from '@/rest/context/auth';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
@@ -16,18 +16,25 @@ export default function DashLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  const { user, handleLogOut } = useAuthContext();
+  const { user, handleLogOut, pageIsLoaded } = useAuthContext();
+  const [isClientReady, setIsClientReady] = useState(false);
 
-  useLayoutEffect(() => {
-    const dolop = async () => {
-      if (!user) {
-        toast.error("You're not logged in. Redirecting...");
-        router.push('/login');
-      }
-    };
+  useEffect(() => {
+    setIsClientReady(true);
 
-    dolop();
-  }, [user]);
+    if (!user && pageIsLoaded) {
+      toast.error("You're not logged in. Redirecting...");
+      router.push('/login');
+    }
+  }, [user, pageIsLoaded, router]);
+
+  if (!isClientReady) {
+    return (
+      <div className='w-full absolute bg-yellow p-12'>
+        <div className='mx-auto flex justify-center'>Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className='bg-gray-50'>
