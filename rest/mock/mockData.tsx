@@ -1,4 +1,5 @@
 export const states = [
+  { label: '---Choose location---', value: '' },
   { label: 'Abia', value: 'abia' },
   { label: 'Adamawa', value: 'adamawa' },
   { label: 'Akwa Ibom', value: 'akwa_ibom' },
