@@ -24,9 +24,11 @@ import { MultiselectField } from '../molecules/multiselectField';
 export default function AddProductModal({
   openProd,
   setOpenProd,
+  refetch,
 }: {
   openProd: boolean;
   setOpenProd: any;
+  refetch?: any;
 }) {
   const [showModal, setShowModal] = useState(false);
   const [showImage, setShowImage] = useState('');
@@ -51,6 +53,7 @@ export default function AddProductModal({
         setOpenProd(false);
         setShowImage('');
         resetForm();
+        refetch();
       } catch (error: any) {
         toast.error(error?.response?.data?.message);
       } finally {

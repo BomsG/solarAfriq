@@ -1,15 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 
 'use client';
 
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import { DashButton } from '../molecules/dashButton';
@@ -21,46 +14,50 @@ export default function ShowProductModal({
   data: product,
 }: {
   openProd: boolean;
-  setOpenProd: any;
+  setOpenProd: (open: boolean) => void;
   data: any;
 }) {
   const { addToCart } = useCart();
 
   return (
     <Dialog open={openProd} onOpenChange={setOpenProd}>
-      <DialogContent className='max-w-[50rem]'>
-        <DialogHeader>
-          <DialogTitle>Add Product to Cart</DialogTitle>
-          <DialogDescription className='hidden'></DialogDescription>
+      <DialogContent className='max-w-[50rem] mx-auto rounded-lg p-2 sm:p-4'>
+        <DialogHeader className='mb-1'>
+          <DialogTitle className='text-base sm:text-lg font-bold'>Add Product to Cart</DialogTitle>
         </DialogHeader>
-        <div className='w-full h-[.8px] my-1 bg-slate-200'></div>
 
-        <Card className='w-full max-w-4xl'>
-          <CardContent className='grid p-4 grid-cols-1 md:grid-cols-2 gap-6'>
-            <div className='h-[20rem] w-[20rem] bg-pink-300 rounded-xl overflow-hidden'>
-              <Image
-                src={product?.image}
-                alt={product?.name}
-                className='mb- w-full h[200px] object-cover  '
-                width={320}
-                height={320}
-                // objectFit='cover'
-              />
+        <Card className='w-full'>
+          <CardContent className='max-h-[70vh] overflow-y-auto scrollbar-thin scrollbar-rounded-lg scrollbar-thumb-gray-300 scrollbar-track-gray-100  grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4 p-2 sm:p-4'>
+            {/* Image Container */}
+            <div className='flex justify-center items-center'>
+              <div className='w-full max-w-[250px] aspect-square bg-gray-100 rounded-xl overflow-hidden'>
+                <Image
+                  src={product?.image}
+                  alt={product?.name}
+                  className='w-full h-full object-cover'
+                  width={250}
+                  height={250}
+                />
+              </div>
             </div>
-            <div className='flex flex-col justify-between'>
-              <div className=''>
-                <h3 className='font-bold text-lg mb-1'>{product?.name}</h3>
-                <p className='mb-6 text-[12px]'>{product?.description}</p>
-                <p className='text-sm text-gray mb-1'>
-                  Available Colours: <span className='font-bold text-black'>{product?.colour}</span>
-                </p>
-                <p className='text-sm text-gray'>
-                  Price: <span className='font-bold text-black'>₦{product?.price}</span>
-                </p>
+
+            {/* Product Details */}
+            <div className='flex flex-col justify-between space-y-2'>
+              <div>
+                <h3 className='text-base sm:text-lg font-bold mb-1'>{product?.name}</h3>
+                <p className='text-xs sm:text-sm text-gray-600 mb-2'>{product?.description}</p>
+
+                <div className='space-y-1'>
+                  <p className='text-xs sm:text-sm'>
+                    Colours: <span className='font-bold'>{product?.colour}</span>
+                  </p>
+                  <p className='text-xs sm:text-sm'>
+                    Price: <span className='font-bold text-base'>₦{product?.price}</span>
+                  </p>
+                </div>
               </div>
-              <div className='space-y-4 mt-4'>
-                <DashButton title='Add to Cart' onClick={() => addToCart(product)} />
-              </div>
+
+              <DashButton title='Add to Cart' onClick={() => addToCart(product)} />
             </div>
           </CardContent>
         </Card>

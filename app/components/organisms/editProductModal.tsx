@@ -26,10 +26,12 @@ export default function EditProductModal({
   openProd,
   setOpenProd,
   id,
+  refetch,
 }: {
   openProd: boolean;
   setOpenProd: any;
   id: string;
+  refetch?: any;
 }) {
   const [showModal, setShowModal] = useState(false);
   const [showImage, setShowImage] = useState('');
@@ -66,6 +68,7 @@ export default function EditProductModal({
         toast.success(res?.data?.message);
         setOpenProd(false);
         resetForm();
+        refetch();
       } catch (error: any) {
         toast.error(error?.response?.data?.message);
       } finally {

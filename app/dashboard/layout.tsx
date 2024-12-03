@@ -10,6 +10,16 @@ import { useAuthContext } from '@/rest/context/auth';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 
+// interface UpdaterContextType {
+//   updateTable: boolean;
+//   setUpdateTable: Dispatch<SetStateAction<boolean>>;
+// }
+
+// const UpdaterContext = createContext<UpdaterContextType>({
+//   updateTable: false,
+//   setUpdateTable: () => {},
+// });
+
 export default function DashLayout({
   children,
 }: Readonly<{
@@ -18,6 +28,7 @@ export default function DashLayout({
   const router = useRouter();
   const { user, handleLogOut, pageIsLoaded } = useAuthContext();
   const [isClientReady, setIsClientReady] = useState(false);
+  // const [updateTable, setUpdateTable] = useState(false);
 
   useEffect(() => {
     setIsClientReady(true);
@@ -63,7 +74,15 @@ export default function DashLayout({
           </Button>
         </div>
       </header>
+      {/* <UpdaterContext.Provider value={{ updateTable, setUpdateTable }}> */}
       {children}
+      {/* </UpdaterContext.Provider> */}
     </div>
   );
 }
+
+// export const useUpdaterContext = () => {
+//   const context = useContext(UpdaterContext);
+
+//   return context;
+// };

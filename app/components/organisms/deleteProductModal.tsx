@@ -21,11 +21,13 @@ export default function DeleteProductModal({
   setOpenProd,
   id,
   name,
+  refetch,
 }: {
   openProd: boolean;
   setOpenProd: any;
   id: string;
   name: string;
+  refetch?: any;
 }) {
   const [loading, setLoading] = useState(false);
 
@@ -35,6 +37,7 @@ export default function DeleteProductModal({
       const res = await api.delete(`/product/${id}`);
       toast.success(res?.data?.message);
       setOpenProd(false);
+      refetch();
     } catch (error: any) {
       toast.error(error?.response?.data?.message);
     } finally {
