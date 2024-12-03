@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 import { BiCartDownload } from 'react-icons/bi';
 import { AiOutlineProduct } from 'react-icons/ai';
-import { BsPerson } from 'react-icons/bs';
+// import { BsPerson } from 'react-icons/bs';
 import { FaScrewdriver } from 'react-icons/fa';
 
 interface DashboardTile {
@@ -22,7 +22,7 @@ interface DashboardTile {
 const tiles: DashboardTile[] = [
   {
     title: 'Orders',
-    description: 'Learn how to tackle adversity, challenges and professional setbacks.',
+    description: 'Manage and fulfil orders',
     rating: 4.1,
     progress: 12,
     color: 'bg-[#E57373]',
@@ -31,7 +31,7 @@ const tiles: DashboardTile[] = [
   },
   {
     title: 'Products',
-    description: 'Create a development plan that best fits your goals and sense of purpose.',
+    description: 'Create new products, delete etc.',
     rating: 4.5,
     progress: 32,
     color: 'bg-[#4DB6AC]',
@@ -40,23 +40,23 @@ const tiles: DashboardTile[] = [
   },
   {
     title: 'Technicians',
-    description: 'Develop your sense of belonging and an active involvement in meaningful work.',
+    description: 'See all technicians, approve, reject etc.',
     rating: 5.0,
     progress: 80,
     color: 'bg-[#F4511E]',
     icon: <FaScrewdriver />,
     href: '/dashboard/technicians',
   },
-  {
-    title: 'Profile',
-    description: 'Learn how to strategize and formulate your own professional goals.',
-    rating: 4.6,
-    progress: 100,
-    color: 'bg-[#E91E63]',
-    size: 'large',
-    icon: <BsPerson />,
-    href: '/dashboard/profile',
-  },
+  // {
+  //   title: 'Profile',
+  //   description: 'Learn how to strategize and formulate your own professional goals.',
+  //   rating: 4.6,
+  //   progress: 100,
+  //   color: 'bg-[#E91E63]',
+  //   size: 'large',
+  //   icon: <BsPerson />,
+  //   href: '/dashboard/profile',
+  // },
   //   {
   //     title: 'Goal Orientation',
   //     description: 'Adapt your strategies to maximize personal and professional success.',

@@ -1,42 +1,49 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import useGetReq from '@/rest/hooks/useGetRequest';
 import { DataTable } from '@/app/components/table/data-table';
-import { allProductsCol } from '@/app/components/table/tableColumns';
+import { allOrdersCol } from '@/app/components/table/tableColumns';
 import { Spinner } from '@/app/components/molecules/spinner';
 import { useRouter } from 'next/navigation';
-import { ChevronLeft, PlusCircle } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import { useState } from 'react';
-import AddProductModal from '@/app/components/organisms/addProductModal';
-import EditProductModal from '@/app/components/organisms/editProductModal';
-import DeleteProductModal from '@/app/components/organisms/deleteProductModal';
+// import AddProductModal from '@/app/components/organisms/addProductModal';
+// import EditProductModal from '@/app/components/organisms/editProductModal';
+// import DeleteProductModal from '@/app/components/organisms/deleteProductModal';
+import readableDate from '@/rest/utils/readableDate';
 
 export default function Orders() {
-  const [openProd, setOpenProd] = useState(false);
-  const [openEditProd, setOpenEditProd] = useState(false);
-  const [openDeleteProd, setOpenDeleteProd] = useState(false);
-  const [showId, setShowId] = useState('');
-  const [showName, setShowName] = useState('');
+  // const [openProd, setOpenProd] = useState(false);
+  // const [openEditProd, setOpenEditProd] = useState(false);
+  // const [openDeleteProd, setOpenDeleteProd] = useState(false);
+  // const [showId, setShowId] = useState('');
+  // const [showName, setShowName] = useState('');
   const router = useRouter();
   const { data: orders, isLoading } = useGetReq(`/order`);
   const ordersData = orders?.data?.data?.map((pro: any) => ({
     id: pro._id,
-    image: pro.imageUrl,
-    name: pro.name,
-    colour: pro.colour?.map((col: { label: string }) => col.label),
-    price: pro.price,
+    name: pro.customer.name,
+    email: pro.customer.email,
+    address: pro.customer.address,
+    items: pro.items?.length,
+    status: pro.status,
+    createdAt: readableDate(pro.createdAt),
   }));
 
   const handleEdit = (id: string) => {
-    setOpenEditProd(true);
-    setShowId(id);
+    // setOpenEditProd(true);
+    console.log('here');
+    // setShowId(id);
   };
   const handleDelete = (id: string, name: string) => {
-    setOpenDeleteProd(true);
-    setShowId(id);
-    setShowName(name);
+    // setOpenDeleteProd(true);
+    // setShowId(id);
+    // setShowName(name);
+
+    console.log('here');
   };
 
   return (
@@ -53,12 +60,12 @@ export default function Orders() {
                 >
                   <ChevronLeft size={16} /> Go Back
                 </button>
-                <button
+                {/* <button
                   className=' flex items-center gap-2 font-bold text-[12px] bg-green-500 p-2 rounded-md  text-white  h-[32px] hover:bg-green-600'
                   onClick={() => setOpenProd(true)}
                 >
                   <PlusCircle size={16} /> Add Product
-                </button>
+                </button> */}
               </div>
             </div>
             {isLoading ? (
@@ -66,17 +73,17 @@ export default function Orders() {
                 <Spinner size='10' color='pink' />
               </div>
             ) : (
-              <DataTable columns={allProductsCol(handleEdit, handleDelete)} data={ordersData} />
+              <DataTable columns={allOrdersCol(handleEdit, handleDelete)} data={ordersData} />
             )}
 
-            <AddProductModal openProd={openProd} setOpenProd={setOpenProd} />
+            {/* <AddProductModal openProd={openProd} setOpenProd={setOpenProd} />
             <EditProductModal openProd={openEditProd} setOpenProd={setOpenEditProd} id={showId} />
             <DeleteProductModal
               openProd={openDeleteProd}
               setOpenProd={setOpenDeleteProd}
               id={showId}
               name={showName}
-            />
+            /> */}
           </div>
         </div>
       </main>
