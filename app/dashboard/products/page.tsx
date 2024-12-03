@@ -20,7 +20,7 @@ export default function Products() {
   const [showId, setShowId] = useState('');
   const [showName, setShowName] = useState('');
   const router = useRouter();
-  const { data: products, isLoading } = useGetReq(`/product`);
+  const { data: products, isLoading, refetch } = useGetReq(`/product`);
   const productsData = products?.data?.data?.map((pro: any) => ({
     id: pro._id,
     image: pro.imageUrl,
@@ -69,13 +69,19 @@ export default function Products() {
               <DataTable columns={allProductsCol(handleEdit, handleDelete)} data={productsData} />
             )}
 
-            <AddProductModal openProd={openProd} setOpenProd={setOpenProd} />
-            <EditProductModal openProd={openEditProd} setOpenProd={setOpenEditProd} id={showId} />
+            <AddProductModal openProd={openProd} setOpenProd={setOpenProd} refetch={refetch} />
+            <EditProductModal
+              openProd={openEditProd}
+              setOpenProd={setOpenEditProd}
+              id={showId}
+              refetch={refetch}
+            />
             <DeleteProductModal
               openProd={openDeleteProd}
               setOpenProd={setOpenDeleteProd}
               id={showId}
               name={showName}
+              refetch={refetch}
             />
           </div>
         </div>

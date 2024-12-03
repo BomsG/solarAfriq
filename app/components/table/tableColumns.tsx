@@ -49,7 +49,10 @@ export const allTechniciansCol = (
     accessorKey: 'email',
     header: 'Email',
   },
-
+  {
+    accessorKey: 'phone',
+    header: 'Phone',
+  },
   {
     accessorKey: 'location',
     header: 'Location',

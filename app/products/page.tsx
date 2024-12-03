@@ -10,6 +10,8 @@ import useGetReq from '@/rest/hooks/useGetRequest';
 import { DashButton } from '../components/molecules/dashButton';
 import ProductSkeleton from '../components/organisms/productSkeleton';
 import ShowProductModal from '../components/organisms/showProductModal';
+import { useCart } from '@/rest/hooks/useCart';
+import { PlusCircle } from 'lucide-react';
 
 // interface Product {
 //   id: number;
@@ -21,6 +23,8 @@ import ShowProductModal from '../components/organisms/showProductModal';
 const ProductPage: React.FC = () => {
   const [openProd, setOpenProd] = useState(false);
   const [mol, setMol] = useState<any>({});
+
+  const { addToCart } = useCart();
 
   const { data: products } = useGetReq(`/product`);
   const productsData = products?.data?.data?.map((pro: any) => ({
@@ -71,13 +75,21 @@ const ProductPage: React.FC = () => {
                     </p>
                   </div>
 
-                  <DashButton
-                    title='View Product'
-                    onClick={() => {
-                      setOpenProd(true);
-                      setMol(product);
-                    }}
-                  />
+                  <div className='flex gap-4 items-center'>
+                    <DashButton
+                      title='View Product'
+                      onClick={() => {
+                        setOpenProd(true);
+                        setMol(product);
+                      }}
+                    />
+                    <div
+                      className='cursor-pointer hover:scale-105'
+                      onClick={() => addToCart(product)}
+                    >
+                      <PlusCircle />
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}

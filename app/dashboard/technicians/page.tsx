@@ -20,6 +20,7 @@ export default function Technicians() {
     location: capitalizeFirstLetter(tec.location),
     role: capitalizeFirstLetter(tec.role),
     createdAt: readableDate(tec.createdAt),
+    phone: tec.phone,
     // status: 'approved | awaiting approval | rejected',
     status: 'approved ',
   }));
