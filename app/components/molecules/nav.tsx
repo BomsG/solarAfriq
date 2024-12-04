@@ -62,7 +62,7 @@ export default function Nav() {
       <section
         className={`w-full ${
           path === '/' ? 'absolute' : 'fixed bg-black/40 backdrop-blur-md'
-        } top-0 left-0 z-[99] py-6 px-5 `}
+        } top-0 left-0 z-[99] py-1 md:py-6 px-5 `}
       >
         <div className='max-w-screenxl flex  items-center justify-between mx-aut  sm:px-10 md:px-[150px]'>
           <div className='flex-1'>
@@ -99,9 +99,7 @@ export default function Nav() {
               <div className={`hidden min-[1000px]:flex `}>
                 <Link href='/product'>
                   <Button
-                    spanContent={
-                      <span className='min-[1000px]:text-[14px] '>Contact Installer</span>
-                    }
+                    spanContent={<span className='min-[1000px]:text-[14px] '>Find Installer</span>}
                   />
                 </Link>
               </div>
