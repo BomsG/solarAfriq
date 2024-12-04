@@ -21,35 +21,50 @@ import { useState } from 'react';
 import ImageUploadModal from '../molecules/imageUpload';
 import { UploadCloud } from 'lucide-react';
 import { MultiselectField } from '../molecules/multiselectField';
+import useGetReq from '@/rest/hooks/useGetRequest';
 
-export default function AddProductModal({
+export default function EditProductModal({
   openProd,
   setOpenProd,
+  id,
 }: {
   openProd: boolean;
   setOpenProd: any;
+  id: string;
 }) {
   const [showModal, setShowModal] = useState(false);
   const [showImage, setShowImage] = useState('');
   const [loading, setLoading] = useState(false);
+  const { data: products } = useGetReq(`/product/${id}`);
+
+  const prodv = products?.data?.data;
+  const productsData = {
+    id: prodv?._id,
+    imageUrl: prodv?.imageUrl,
+    name: prodv?.name,
+    description: prodv?.description,
+    colour: prodv?.colour,
+    price: prodv?.price,
+  };
+
   const formik = useFormik({
     initialValues: {
-      name: '',
-      price: '',
-      description: '',
-      colour: '',
-      imageUrl: '',
+      name: productsData?.name || '',
+      price: productsData?.price || '',
+      description: productsData?.description || '',
+      colour: productsData?.colour || '',
+      imageUrl: productsData?.imageUrl || '',
     },
+    enableReinitialize: true,
     onSubmit: async (values, { resetForm }) => {
       const payload = {
         ...values,
-        imageUrl: showImage,
+        imageUrl: !!showImage ? showImage : productsData.imageUrl,
       };
       try {
         setLoading(true);
-        const res = await api.post('/product', payload);
+        const res = await api.put(`/product/${id}`, payload);
         toast.success(res?.data?.message);
-        // console.log(res);
         setOpenProd(false);
         resetForm();
       } catch (error: any) {
@@ -57,8 +72,6 @@ export default function AddProductModal({
       } finally {
         setLoading(false);
       }
-
-      // console.log(payload);
     },
   });
 
@@ -70,7 +83,7 @@ export default function AddProductModal({
     <Dialog open={openProd} onOpenChange={setOpenProd}>
       <DialogContent className='sm:max-w-[425px] overflow-y-scroll max-h-[70vh]'>
         <DialogHeader>
-          <DialogTitle>Add Product</DialogTitle>
+          <DialogTitle>Edit Product</DialogTitle>
           <DialogDescription className='hidden'></DialogDescription>
         </DialogHeader>
         <div className='w-full h-[.8px] my-1 bg-slate-200'></div>
@@ -79,18 +92,6 @@ export default function AddProductModal({
             <TextField label='Name' name='name' formik={formik} />
             <TextField label='Price' name='price' formik={formik} />
             <TextArea label='Description' name='description' formik={formik} />
-            {/* <SelectField
-              label='Colour'
-              name='colour'
-              options={[
-                { label: 'Gray', value: 'gray' },
-                { label: 'Pink', value: 'pink' },
-                { label: 'Black', value: 'black' },
-                { label: 'Blue', value: 'blue' },
-                { label: 'Green', value: 'green' },
-              ]}
-              formik={formik}
-            /> */}
             <MultiselectField
               label='Colour'
               name='colour'
@@ -104,8 +105,6 @@ export default function AddProductModal({
               formik={formik}
             />
 
-            {/* <TextField label='Image Link' name='imageUrl' formik={formik} /> */}
-
             <div className=''>
               <label className='block mb-2 text-sm font-medium text-gray-900'>Image</label>
               <div className='flex justify-between'>
@@ -115,7 +114,11 @@ export default function AddProductModal({
                 >
                   <UploadCloud size={14} /> {!!showImage ? 'Reupload Image' : 'Upload Image'}
                 </button>
-                {!!showImage && <img src={showImage} className='w-8 h-8 rounded-sm' />}
+                {!!showImage ? (
+                  <img src={showImage} className='w-8 h-8 rounded-sm' />
+                ) : (
+                  <img src={productsData?.imageUrl} className='w-8 h-8 rounded-sm' />
+                )}
               </div>
             </div>
 
@@ -127,10 +130,7 @@ export default function AddProductModal({
           </section>
 
           <DialogFooter className='mt-8'>
-            {/* <BamButton title='Submit' loading={loading} /> */}
-            {/* <Button loading={loading}>Add Product</Button> */}
-            <DashButton loading={loading} title='Add Product' />
-            {/* <DashButton title='Add Product' /> */}
+            <DashButton loading={loading} title='Update Product' />
           </DialogFooter>
         </form>
       </DialogContent>

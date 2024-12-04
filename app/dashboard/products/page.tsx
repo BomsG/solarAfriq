@@ -10,18 +10,37 @@ import { useRouter } from 'next/navigation';
 import { ChevronLeft, PlusCircle } from 'lucide-react';
 import { useState } from 'react';
 import AddProductModal from '@/app/components/organisms/addProductModal';
+import EditProductModal from '@/app/components/organisms/editProductModal';
+import DeleteProductModal from '@/app/components/organisms/deleteProductModal';
 
 export default function Products() {
   const [openProd, setOpenProd] = useState(false);
+  const [openEditProd, setOpenEditProd] = useState(false);
+  const [openDeleteProd, setOpenDeleteProd] = useState(false);
+  const [showId, setShowId] = useState('');
+  const [showName, setShowName] = useState('');
   const router = useRouter();
   const { data: products, isLoading } = useGetReq(`/product`);
   const productsData = products?.data?.data?.map((pro: any) => ({
     id: pro._id,
     image: pro.imageUrl,
     name: pro.name,
-    colour: pro.colour,
+    // colour: pro.colour?.split(', '),
+    colour: pro.colour?.map((col: { label: string }) => col.label),
     price: pro.price,
   }));
+
+  const handleEdit = (id: string) => {
+    // console.log(id);
+    setOpenEditProd(true);
+    setShowId(id);
+  };
+  const handleDelete = (id: string, name: string) => {
+    // console.log(id);
+    setOpenDeleteProd(true);
+    setShowId(id);
+    setShowName(name);
+  };
 
   return (
     <div className='relative min-h-screen px-1 sm:px-10'>
@@ -50,10 +69,17 @@ export default function Products() {
                 <Spinner size='10' color='pink' />
               </div>
             ) : (
-              <DataTable columns={allProductsCol} data={productsData} />
+              <DataTable columns={allProductsCol(handleEdit, handleDelete)} data={productsData} />
             )}
 
             <AddProductModal openProd={openProd} setOpenProd={setOpenProd} />
+            <EditProductModal openProd={openEditProd} setOpenProd={setOpenEditProd} id={showId} />
+            <DeleteProductModal
+              openProd={openDeleteProd}
+              setOpenProd={setOpenDeleteProd}
+              id={showId}
+              name={showName}
+            />
           </div>
         </div>
       </main>

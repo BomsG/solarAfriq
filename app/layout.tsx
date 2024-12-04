@@ -6,6 +6,8 @@ import CartProvider from '@/rest/context/CartContext';
 // import ShapeAnimation from './components/PageWrapper';
 import Head from 'next/head';
 import { AppContextProvider } from '@/rest/context';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const pjSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -45,9 +47,8 @@ export default function RootLayout({
             {/* ShapeAnimation is rendered for the whole layout */}
             {/* <ShapeAnimation /> */}
 
-            {/* <Nav /> */}
             {children}
-            {/* <Footer /> */}
+            <ToastContainer stacked position='top-center' />
           </body>
         </CartProvider>
       </AppContextProvider>
