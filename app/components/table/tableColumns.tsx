@@ -199,16 +199,20 @@ export const allOrdersCol = (
     header: 'Customer Name',
   },
   {
-    accessorKey: 'email',
-    header: 'Email',
+    accessorKey: 'phone',
+    header: 'Phone No.',
   },
-  {
-    accessorKey: 'address',
-    header: 'Address',
-  },
+  // {
+  //   accessorKey: 'address',
+  //   header: 'Address',
+  // },
   {
     accessorKey: 'items',
     header: 'No. of Items',
+  },
+  {
+    accessorKey: 'total',
+    header: 'Total',
   },
   {
     accessorKey: 'status',
