@@ -14,6 +14,7 @@ import { useState } from 'react';
 // import EditProductModal from '@/app/components/organisms/editProductModal';
 // import DeleteProductModal from '@/app/components/organisms/deleteProductModal';
 import readableDate from '@/rest/utils/readableDate';
+import { formatCurrency } from '@/rest/utils/formatCurrency';
 
 export default function Orders() {
   // const [openProd, setOpenProd] = useState(false);
@@ -26,10 +27,11 @@ export default function Orders() {
   const ordersData = orders?.data?.data?.map((pro: any) => ({
     id: pro._id,
     name: pro.customer.name,
-    email: pro.customer.email,
-    address: pro.customer.address,
+    // email: pro.customer.email,
+    phone: pro.customer.phone,
     items: pro.items?.length,
     status: pro.status,
+    total: formatCurrency(pro.total),
     createdAt: readableDate(pro.createdAt),
   }));
 
