@@ -114,7 +114,7 @@ export default function CartPage() {
 
   return (
     <PublicLayout>
-      <div className='container mx-auto'>
+      <div className='containe mx-auto'>
         <div className='h-[120px] bg-black'></div>
 
         {!openContact && (
