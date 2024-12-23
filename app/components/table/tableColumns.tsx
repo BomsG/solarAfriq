@@ -27,6 +27,7 @@ export type TechniciansProps = {
   // role: 'electrician' | 'installer';
   role: string;
   createdAt: string;
+  status: string;
 };
 
 export type ProductsProps = {
@@ -42,10 +43,10 @@ export const allTechniciansCol = (
   handleAccept: (id: string) => void,
   handleReject: (id: string) => void
 ): ColumnDef<TechniciansProps>[] => [
-  {
-    accessorKey: 'technicianId',
-    header: 'Technician ID',
-  },
+  // {
+  //   accessorKey: 'technicianId',
+  //   header: 'Technician ID',
+  // },
   {
     accessorKey: 'email',
     header: 'Email',
@@ -63,19 +64,45 @@ export const allTechniciansCol = (
     header: 'Role',
   },
   {
+    accessorKey: 'status',
+    header: 'Status',
+    cell: ({ row }) => {
+      return (
+        <span
+          className={`${
+            row.original.status === 'rejected'
+              ? 'text-red-400'
+              : row.original.status === 'accepted'
+              ? 'text-green-400'
+              : 'text-gray-300'
+          } text-[12px] `}
+        >
+          {row.original.status === 'accepted'
+            ? 'ACCEPTED'
+            : row.original.status === 'rejected'
+            ? 'REJECTED'
+            : 'N/A'}
+        </span>
+      );
+    },
+  },
+  {
     accessorKey: 'createdAt',
     header: 'Registered On',
   },
   {
     accessorKey: 'action',
-    header: 'Actions',
+    header: '',
     cell: ({ row }) => {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className='h-8 w-8 p-0 focus:outline-none text-gray-500'>
+            <button className='h-8 w8 p-0 focus:outline-none text-gray-500'>
               <span className='sr-only'>Open menu</span>
-              <Ellipsis size={20} />
+              {/* <Ellipsis size={20} /> */}
+              <div className='flex items-center gap-4 border rounded-md bg-white py-1 px-2'>
+                <span>More</span> <ChevronDown size={20} />
+              </div>
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -89,13 +116,13 @@ export const allTechniciansCol = (
             </Link> */}
             <DropdownMenuItem
               className='cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none '
-              onClick={() => handleAccept(row.original.technicianId)}
+              onClick={() => handleAccept(row.original.email)}
             >
               Accept
             </DropdownMenuItem>
             <DropdownMenuItem
               className='cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none'
-              onClick={() => handleReject(row.original.technicianId)}
+              onClick={() => handleReject(row.original.email)}
             >
               Reject
             </DropdownMenuItem>

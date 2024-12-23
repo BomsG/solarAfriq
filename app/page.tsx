@@ -9,6 +9,7 @@ import PublicLayout from './components/layout/publicLayout';
 
 export default function Home() {
   // const { cart } = useCart();
+
   return (
     <PublicLayout>
       <div className='relative'>
