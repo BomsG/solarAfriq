@@ -232,14 +232,22 @@ export const allOrdersCol = (handleModal: (id: string) => void): ColumnDef<Order
     accessorKey: 'name',
     header: 'Customer Name',
     cell: ({ row }) => {
-      return <div onClick={() => handleModal(row.original.id)}>{row.original.name}</div>;
+      return (
+        <div className='cursor-pointer' onClick={() => handleModal(row.original.id)}>
+          {row.original.name}
+        </div>
+      );
     },
   },
   {
     accessorKey: 'phone',
     header: 'Phone No.',
     cell: ({ row }) => {
-      return <div onClick={() => handleModal(row.original.id)}>{row.original.phone}</div>;
+      return (
+        <div className='cursor-pointer' onClick={() => handleModal(row.original.id)}>
+          {row.original.phone}
+        </div>
+      );
     },
   },
   // {
@@ -250,75 +258,46 @@ export const allOrdersCol = (handleModal: (id: string) => void): ColumnDef<Order
     accessorKey: 'items',
     header: 'No. of Items',
     cell: ({ row }) => {
-      return <div onClick={() => handleModal(row.original.id)}>{row.original.items}</div>;
+      return (
+        <div className='cursor-pointer' onClick={() => handleModal(row.original.id)}>
+          {row.original.items}
+        </div>
+      );
     },
   },
   {
     accessorKey: 'total',
     header: 'Total',
     cell: ({ row }) => {
-      return <div onClick={() => handleModal(row.original.id)}>{row.original.total}</div>;
+      return (
+        <div className='cursor-pointer' onClick={() => handleModal(row.original.id)}>
+          {row.original.total}
+        </div>
+      );
     },
   },
   {
     accessorKey: 'status',
     header: 'Status',
     cell: ({ row }) => {
-      return <div onClick={() => handleModal(row.original.id)}>{row.original.status}</div>;
+      return (
+        <div className='cursor-pointer' onClick={() => handleModal(row.original.id)}>
+          {row.original.status}
+        </div>
+      );
     },
   },
   {
     accessorKey: 'createdAt',
     header: 'Order Date',
     cell: ({ row }) => {
-      return <div onClick={() => handleModal(row.original.id)}>{row.original.createdAt}</div>;
+      return (
+        <div className='cursor-pointer' onClick={() => handleModal(row.original.id)}>
+          {row.original.createdAt}
+        </div>
+      );
     },
   },
-  // {
-  //   accessorKey: 'action',
-  //   header: '',
-  //   cell: ({ row }) => {
-  //     return (
-  //       <DropdownMenu>
-  //         <DropdownMenuTrigger asChild>
-  //           <button className='h-8  p-0 focus:outline-none text-gray-500'>
-  //             <span className='sr-only'>Open menu</span>
-  //             {/* <Ellipsis size={20} /> */}
-  //             <div className='flex items-center gap-4 border rounded-md bg-white py-1 px-2'>
-  //               <span>More</span> <ChevronDown size={20} />
-  //             </div>
-  //           </button>
-  //         </DropdownMenuTrigger>
-  //         <DropdownMenuContent
-  //           sideOffset={5}
-  //           className='bg-white border rounded-md shadow-lg w-28 focus:outline-none'
-  //         >
-  //           <DropdownMenuItem
-  //             className='cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none '
-  //             onClick={() => handleEdit(row.original.id)}
-  //           >
-  //             Edit
-  //           </DropdownMenuItem>
-  //           <DropdownMenuItem
-  //             className='cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none'
-  //             onClick={() => handleDelete(row.original.id, row.original.name)}
-  //           >
-  //             Delete
-  //           </DropdownMenuItem>
-  //         </DropdownMenuContent>
-  //       </DropdownMenu>
-  //     );
-  //   },
-  // },
-  // {
-  //   accessorKey: 'edit',
-  //   header: '',
-  //   cell: ({ row }) => (
-  //     <Link href={`/dashboard/products/${row.original.id}`}>
-  //       <span className='text-blue-400 underline'>edit</span>
-  //     </Link>
-  //   ),
-  // },
 ];
 
 export const singleOrderItemsCol = (): ColumnDef<OrdersProps>[] => [
