@@ -23,6 +23,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
   isLoading?: boolean;
   emptyText?: string;
+  pagination?: boolean;
 }
 
 export function DataTable<TData, TValue>({
@@ -30,6 +31,7 @@ export function DataTable<TData, TValue>({
   data = [],
   isLoading = false,
   emptyText = 'No results.',
+  pagination = false,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -77,48 +79,50 @@ export function DataTable<TData, TValue>({
         </TableBody>
       </Table>
 
-      <div className='flex items-center justify-center space-x-2 py-4'>
-        {/* <button
+      {pagination && (
+        <div className='flex items-center justify-center space-x-2 py-4'>
+          {/* <button
           className='px-2 py-1 text-sm border rounded disabled:opacity-50'
           onClick={() => table.setPageIndex(0)}
           disabled={!table.getCanPreviousPage()}
         >
           First
         </button> */}
-        <button
-          className='w-9 h-9 px-2 py-1 text-sm border rounded disabled:opacity-50'
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          <ChevronLeft size={20} />
-        </button>
-        {table.getPageOptions().map((pageIndex) => (
           <button
-            key={pageIndex}
-            className={`w-9 h-9 px-2 py-1 text-sm border rounded ${
-              table.getState().pagination.pageIndex === pageIndex ? 'bg-gray-200' : ''
-            }`}
-            onClick={() => table.setPageIndex(pageIndex)}
+            className='w-9 h-9 px-2 py-1 text-sm border rounded disabled:opacity-50'
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
           >
-            {pageIndex + 1}
+            <ChevronLeft size={20} />
           </button>
-        ))}
-        {/* <span>...</span> */}
-        <button
-          className='w-9 h-9 px-2 py-1 text-sm border rounded disabled:opacity-50'
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          <ChevronRight size={20} />
-        </button>
-        {/* <button
+          {table.getPageOptions().map((pageIndex) => (
+            <button
+              key={pageIndex}
+              className={`w-9 h-9 px-2 py-1 text-sm border rounded ${
+                table.getState().pagination.pageIndex === pageIndex ? 'bg-gray-200' : ''
+              }`}
+              onClick={() => table.setPageIndex(pageIndex)}
+            >
+              {pageIndex + 1}
+            </button>
+          ))}
+          {/* <span>...</span> */}
+          <button
+            className='w-9 h-9 px-2 py-1 text-sm border rounded disabled:opacity-50'
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            <ChevronRight size={20} />
+          </button>
+          {/* <button
           className='px-2 py-1 text-sm border rounded disabled:opacity-50'
           onClick={() => table.setPageIndex(table.getPageCount() - 1)}
           disabled={!table.getCanNextPage()}
         >
           Last
         </button> */}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

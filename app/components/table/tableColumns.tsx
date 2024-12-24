@@ -39,6 +39,16 @@ export type ProductsProps = {
   edit: any;
 };
 
+export type OrdersProps = {
+  id: string;
+  name: string;
+  phone: string;
+  items: string;
+  total: any;
+  status: any;
+  createdAt: any;
+};
+
 export const allTechniciansCol = (
   handleAccept: (id: string) => void,
   handleReject: (id: string) => void
@@ -211,10 +221,7 @@ export const allProductsCol = (
   // },
 ];
 
-export const allOrdersCol = (
-  handleEdit: (id: string) => void,
-  handleDelete: (id: string, name: string) => void
-): ColumnDef<ProductsProps>[] => [
+export const allOrdersCol = (handleModal: (id: string) => void): ColumnDef<OrdersProps>[] => [
   // {
   //   accessorKey: 'id',
   //   header: '',
@@ -224,10 +231,16 @@ export const allOrdersCol = (
   {
     accessorKey: 'name',
     header: 'Customer Name',
+    cell: ({ row }) => {
+      return <div onClick={() => handleModal(row.original.id)}>{row.original.name}</div>;
+    },
   },
   {
     accessorKey: 'phone',
     header: 'Phone No.',
+    cell: ({ row }) => {
+      return <div onClick={() => handleModal(row.original.id)}>{row.original.phone}</div>;
+    },
   },
   // {
   //   accessorKey: 'address',
@@ -236,18 +249,30 @@ export const allOrdersCol = (
   {
     accessorKey: 'items',
     header: 'No. of Items',
+    cell: ({ row }) => {
+      return <div onClick={() => handleModal(row.original.id)}>{row.original.items}</div>;
+    },
   },
   {
     accessorKey: 'total',
     header: 'Total',
+    cell: ({ row }) => {
+      return <div onClick={() => handleModal(row.original.id)}>{row.original.total}</div>;
+    },
   },
   {
     accessorKey: 'status',
     header: 'Status',
+    cell: ({ row }) => {
+      return <div onClick={() => handleModal(row.original.id)}>{row.original.status}</div>;
+    },
   },
   {
     accessorKey: 'createdAt',
     header: 'Order Date',
+    cell: ({ row }) => {
+      return <div onClick={() => handleModal(row.original.id)}>{row.original.createdAt}</div>;
+    },
   },
   // {
   //   accessorKey: 'action',
@@ -294,4 +319,23 @@ export const allOrdersCol = (
   //     </Link>
   //   ),
   // },
+];
+
+export const singleOrderItemsCol = (): ColumnDef<OrdersProps>[] => [
+  {
+    accessorKey: 'id',
+    header: 'Product ID',
+  },
+  {
+    accessorKey: 'name',
+    header: 'Product Name',
+  },
+  {
+    accessorKey: 'qty',
+    header: 'Quantity',
+  },
+  {
+    accessorKey: 'colour',
+    header: 'Colour',
+  },
 ];

@@ -77,6 +77,7 @@ export default function CartPage() {
 
       return {
         productId: item.id,
+        productName: item.name,
         quantity,
         colour,
       };
