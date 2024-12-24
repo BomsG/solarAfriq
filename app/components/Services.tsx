@@ -2,13 +2,13 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion } from 'framer-motion';
 import fx from '../images/real1.jpg';
 import comm from '../images/real4.jpg';
-import consult from '../images/real3.jpg';
 import maintain from '../images/maintain.jpg';
+import api from '@/rest/Auth/axios';
 
 // Define a type for the service
 interface Service {
@@ -41,7 +41,19 @@ const services: Service[] = [
 ];
 
 const Services: React.FC = () => {
+  // const { data } = useGetReq(`/product`);
   const [activeService, setActiveService] = useState<Service>(services[0]);
+  useEffect(() => {
+    const fero = async () => {
+      try {
+        api('/product');
+      } catch (error) {
+        throw new Error('Loading API...');
+      }
+    };
+
+    fero();
+  }, []);
 
   return (
     <>

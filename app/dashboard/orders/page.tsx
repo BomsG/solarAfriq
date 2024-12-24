@@ -10,20 +10,16 @@ import { Spinner } from '@/app/components/molecules/spinner';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft } from 'lucide-react';
 import { useState } from 'react';
-// import AddProductModal from '@/app/components/organisms/addProductModal';
-// import EditProductModal from '@/app/components/organisms/editProductModal';
-// import DeleteProductModal from '@/app/components/organisms/deleteProductModal';
 import readableDate from '@/rest/utils/readableDate';
 import { formatCurrency } from '@/rest/utils/formatCurrency';
+import ShowProductModalDB from '@/app/components/organisms/showProductModalDB';
 
 export default function Orders() {
-  // const [openProd, setOpenProd] = useState(false);
-  // const [openEditProd, setOpenEditProd] = useState(false);
-  // const [openDeleteProd, setOpenDeleteProd] = useState(false);
-  // const [showId, setShowId] = useState('');
-  // const [showName, setShowName] = useState('');
+  const [orderId, setOrderId] = useState('');
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const router = useRouter();
-  const { data: orders, isLoading } = useGetReq(`/order`);
+  const { data: orders, isLoading, refetch } = useGetReq(`/order`);
+  const { data: mol } = useGetReq(`/order/${orderId}`);
   const ordersData = orders?.data?.data?.map((pro: any) => ({
     id: pro._id,
     name: pro.customer.name,
@@ -35,17 +31,10 @@ export default function Orders() {
     createdAt: readableDate(pro.createdAt),
   }));
 
-  const handleEdit = (id: string) => {
-    // setOpenEditProd(true);
-    console.log('here');
-    // setShowId(id);
-  };
-  const handleDelete = (id: string, name: string) => {
-    // setOpenDeleteProd(true);
-    // setShowId(id);
-    // setShowName(name);
-
-    console.log('here');
+  const handleModal = (id: string) => {
+    // console.log(id);
+    setOpenModal(true);
+    setOrderId(id);
   };
 
   return (
@@ -62,12 +51,6 @@ export default function Orders() {
                 >
                   <ChevronLeft size={16} /> Go Back
                 </button>
-                {/* <button
-                  className=' flex items-center gap-2 font-bold text-[12px] bg-green-500 p-2 rounded-md  text-white  h-[32px] hover:bg-green-600'
-                  onClick={() => setOpenProd(true)}
-                >
-                  <PlusCircle size={16} /> Add Product
-                </button> */}
               </div>
             </div>
             {isLoading ? (
@@ -75,17 +58,15 @@ export default function Orders() {
                 <Spinner size='10' color='pink' />
               </div>
             ) : (
-              <DataTable columns={allOrdersCol(handleEdit, handleDelete)} data={ordersData} />
+              <DataTable columns={allOrdersCol(handleModal)} data={ordersData} />
             )}
 
-            {/* <AddProductModal openProd={openProd} setOpenProd={setOpenProd} />
-            <EditProductModal openProd={openEditProd} setOpenProd={setOpenEditProd} id={showId} />
-            <DeleteProductModal
-              openProd={openDeleteProd}
-              setOpenProd={setOpenDeleteProd}
-              id={showId}
-              name={showName}
-            /> */}
+            <ShowProductModalDB
+              openProd={openModal}
+              setOpenProd={setOpenModal}
+              data={mol}
+              refetch={refetch}
+            />
           </div>
         </div>
       </main>
