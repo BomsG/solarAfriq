@@ -13,8 +13,9 @@ import api from '@/rest/Auth/axios';
 import { toast } from 'react-toastify';
 import { useFormik } from 'formik';
 import { TextField } from '../components/molecules/textField';
-import { PhoneNumberField } from '../components/molecules/phoneNumberField';
+// import { PhoneNumberField } from '../components/molecules/phoneNumberField';
 import { useRouter } from 'next/navigation';
+import * as Yup from 'yup';
 
 export default function CartPage() {
   const [loading, setLoading] = useState(false);
@@ -44,7 +45,7 @@ export default function CartPage() {
       const quantity = quantities[item.id] ?? 1;
       const price = parseFloat(item.price.toString().replace(/,/g, '')) || 0;
 
-      console.log(price);
+      // console.log(price);
       return sum + price * quantity;
     }, 0);
     setSubTotal(total);
@@ -93,6 +94,16 @@ export default function CartPage() {
       phone: '',
       address: '',
     },
+    validationSchema: Yup.object({
+      name: Yup.string().required('Your name is required'),
+      email: Yup.string().email('Invalid email format').required('Your email is required'),
+      phone: Yup.string()
+        .matches(/^[0-9]+$/, 'Must be only digits')
+        .min(11, 'Must be exactly 11 digits')
+        .max(11, 'Must be exactly 11 digits')
+        .required('Your phone number is required'),
+      address: Yup.string().required('Your address is required'),
+    }),
     enableReinitialize: true,
     onSubmit: async (values, { resetForm }) => {
       try {
@@ -213,7 +224,8 @@ export default function CartPage() {
               <section className='flex flex-col gap-3 mb-8'>
                 <TextField label='Name' name='name' formik={formik} />
                 <TextField label='Email' name='email' formik={formik} />
-                <PhoneNumberField label='Phone number' name='phone' formik={formik} />
+                {/* <PhoneNumberField label='Phone number' name='phone' formik={formik} /> */}
+                <TextField label='Phone number' name='phone' formik={formik} />
                 <TextField label='Address' name='address' formik={formik} />
               </section>
 
