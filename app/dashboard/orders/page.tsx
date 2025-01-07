@@ -37,6 +37,8 @@ export default function Orders() {
     setOrderId(id);
   };
 
+  console.log(orders?.data);
+
   return (
     <div className='relative min-h-screen px-1 sm:px-10'>
       <main className='container py-6 mt-6 sm:mt-20'>
@@ -58,7 +60,7 @@ export default function Orders() {
                 <Spinner size='10' color='pink' />
               </div>
             ) : (
-              <DataTable columns={allOrdersCol(handleModal)} data={ordersData} />
+              <DataTable columns={allOrdersCol(handleModal)} data={ordersData} pagination={true} />
             )}
 
             <ShowProductModalDB
