@@ -9,11 +9,9 @@ import api from '@/rest/Auth/axios';
 import PublicLayout from '@/app/components/layout/publicLayout';
 import { TextField } from '@/app/components/molecules/textField';
 import { DashButton } from '@/app/components/molecules/dashButton';
-import { useAuthContext } from '@/rest/context/auth';
 import { useRouter } from 'next/navigation';
 
-const Login: React.FC = () => {
-  const { handleSetToken, handleSetUser } = useAuthContext();
+const Register: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -26,22 +24,11 @@ const Login: React.FC = () => {
     onSubmit: async (values, { resetForm }) => {
       try {
         setLoading(true);
-        const res = await api.post('/login', values);
+        const res = await api.post('/register', values);
 
-        if (res?.data?.token) {
-          handleSetToken(res?.data?.token);
-          try {
-            const user = await api('/user');
-            handleSetUser(user?.data?.data);
-            toast.success('Login successful');
-            router.push('/dashboard');
-            resetForm();
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          } catch (error: any) {
-            toast.error('Unable to fetch user');
-            // toast.error(error?.respose?.data?.message);
-          }
-        }
+        toast.success(res?.data?.message);
+        resetForm();
+        router.push('/verify-email');
       } catch (error: any) {
         toast.error(error?.response?.data?.message);
       } finally {
@@ -58,11 +45,11 @@ const Login: React.FC = () => {
             <form onSubmit={formik.handleSubmit}>
               <section className='flex flex-col gap-3 mb-8'>
                 <div className='flex flex-col mb-4'>
-                  <h2 className='font-bold text-lg'>Login</h2>
-                  <p className='text-sm'>Log into your dashboard</p>
+                  <h2 className='font-bold text-lg'>Register</h2>
+                  <p className='text-sm'>Enter your details to get started</p>
                 </div>
                 <TextField label='Email' name='email' formik={formik} />
-                <TextField type='password' label='Password' name='password' formik={formik} />
+                <TextField label='Password' name='password' type='password' formik={formik} />
               </section>
 
               <DashButton loading={loading} title='Submit' />
@@ -74,4 +61,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Register;
