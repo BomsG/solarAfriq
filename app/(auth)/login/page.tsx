@@ -34,7 +34,7 @@ const Login: React.FC = () => {
             const user = await api('/user');
             handleSetUser(user?.data?.data);
             toast.success('Login successful');
-            router.push('/dashboard');
+            router.push('/dashboard/settings');
             resetForm();
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
           } catch (error: any) {

@@ -1,17 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { BsMegaphone, BsMegaphoneFill, BsPieChart } from 'react-icons/bs';
+// import { BsMegaphone, BsMegaphoneFill, BsPieChart } from 'react-icons/bs';
 // import { usePathname, useRouter } from 'next/navigation';
 import { RiAdminLine, RiKey2Fill, RiSettingsFill } from 'react-icons/ri';
 import { Dispatch, ReactNode, SetStateAction } from 'react';
 import {
   MdClose,
-  MdCreate,
-  MdHandshake,
-  MdOutlineCampaign,
-  MdPayment,
-  MdSupport,
+  // MdCreate,
+  // MdHandshake,
+  // MdOutlineCampaign,
+  // MdPayment,
+  // MdSupport,
 } from 'react-icons/md';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthContext } from '@/rest/context/auth';
@@ -38,41 +38,41 @@ export function DashboardSidebar({
   // const userIsAdmin = user?.Role.includes(2);
 
   const navItems: MenuProps[] = [
-    {
-      id: 1,
-      title: 'All Campaigns',
-      icon: <MdOutlineCampaign size={20} />,
-      notif: '',
-      href: '/allcampaigns',
-    },
-    {
-      id: 2,
-      title: 'My Campaigns',
-      icon: <BsMegaphone />,
-      notif: '',
-      href: '/mycampaigns',
-    },
-    {
-      id: 3,
-      title: 'Create Campaign',
-      icon: <MdCreate />,
-      notif: '',
-      href: '/createcampaign',
-    },
-    {
-      id: 4,
-      title: 'My Accepted Bids',
-      icon: <MdHandshake />,
-      notif: '',
-      href: '/mycampaignbids',
-    },
-    {
-      id: 5,
-      title: 'My Campaign Stats',
-      icon: <BsPieChart />,
-      notif: '',
-      href: '/mycampaignstats',
-    },
+    // {
+    //   id: 1,
+    //   title: 'My Orders',
+    //   icon: <MdOutlineCampaign size={20} />,
+    //   notif: '',
+    //   href: '/dashboard/orders',
+    // },
+    // {
+    //   id: 2,
+    //   title: 'My Campaigns',
+    //   icon: <BsMegaphone />,
+    //   notif: '',
+    //   href: '/mycampaigns',
+    // },
+    // {
+    //   id: 3,
+    //   title: 'Create Campaign',
+    //   icon: <MdCreate />,
+    //   notif: '',
+    //   href: '/createcampaign',
+    // },
+    // {
+    //   id: 4,
+    //   title: 'My Accepted Bids',
+    //   icon: <MdHandshake />,
+    //   notif: '',
+    //   href: '/mycampaignbids',
+    // },
+    // {
+    //   id: 5,
+    //   title: 'My Campaign Stats',
+    //   icon: <BsPieChart />,
+    //   notif: '',
+    //   href: '/mycampaignstats',
+    // },
 
     // {
     //   id: 2,
@@ -89,33 +89,33 @@ export function DashboardSidebar({
     //   href: '/dashboard/campaigns',
     // },
 
-    {
-      id: 6,
-      title: 'Payment',
-      icon: <MdPayment />,
-      notif: '',
-      href: '/payment',
-    },
+    // {
+    //   id: 6,
+    //   title: 'Payment',
+    //   icon: <MdPayment />,
+    //   notif: '',
+    //   href: '/payment',
+    // },
     {
       id: 7,
       title: 'Settings',
       icon: <RiSettingsFill />,
       notif: '',
-      href: '/settings',
+      href: '/dashboard/settings',
     },
-    {
-      id: 8,
-      title: 'Support',
-      icon: <MdSupport />,
-      notif: '',
-      href: '/support',
-    },
+    // {
+    //   id: 8,
+    //   title: 'Support',
+    //   icon: <MdSupport />,
+    //   notif: '',
+    //   href: '/support',
+    // },
     {
       id: 9,
       title: 'Admin Center',
       icon: <RiAdminLine />,
       notif: '',
-      href: '/admincenter',
+      href: '/admin-dashboard',
     },
     // {
     //   id: 6,
@@ -180,16 +180,17 @@ export function DashboardSidebar({
       } bg-white border-r border-gray-200 sm:translate-x-0 `}
       aria-label='Sidebar'
     >
-      <div className='h-full overflow-y-auto bg-[#873A7A] '>
-        <div className='h-[60px] flex justify-between items-center border-b border-[#77346c] mb-4 p-4'>
+      <div className='h-full overflow-y-auto bg-[#07211e] '>
+        <div className='h-[60px] flex justify-between items-center border-b border-[#07211e] mb-4 p-8'>
           <Link href='/'>
             <div className='font-bold text-white flex items-center gap-1'>
-              <BsMegaphoneFill /> <h3>kreators</h3>
+              {/* <BsMegaphoneFill /> <h3>kreators</h3> */}
+              SolarAfriq
             </div>
           </Link>
 
           <div
-            className='flex sm:hidden justify-center items-center w-6 h-6 rounded-full text-white cursor-pointer bg-[#77346c]'
+            className='flex sm:hidden justify-center items-center w-6 h-6 rounded-full text-white cursor-pointer bg-[#07211e]'
             onClick={() => setSbar(!sbar)}
           >
             <MdClose />
@@ -202,8 +203,8 @@ export function DashboardSidebar({
               <Link
                 href={item.href}
                 className={`${
-                  pathname === item.href ? 'bg-[#77346c] text-gray-100' : 'text-gray-300'
-                } flex items-center justify-between p-3  rounded-[4px]  hover:bg-[#833b77]  group`}
+                  pathname === item.href ? 'bg-[#07211e] text-gray-100' : 'text-gray-300'
+                } flex items-center justify-between p-3  rounded-[4px]  hover:bg-[#174942]  group`}
               >
                 <div className='flex items-center'>
                   <div className='text-white'>{item.icon}</div>
@@ -223,7 +224,7 @@ export function DashboardSidebar({
           {/* <Link
             href='/dashboard/settings'
             className={`${
-              pathname === '/dashboard/settings' ? 'bg-[#77346c] text-gray-100' : 'text-gray-300'
+              pathname === '/dashboard/settings' ? 'bg-[#07211e] text-gray-100' : 'text-gray-300'
             } flex items-center justify-between p-3  rounded-[4px]  hover:bg-[#833b77]  group`}
           >
             <RiSettingsFill />
@@ -239,7 +240,7 @@ export function DashboardSidebar({
           </div> */}
 
           <div
-            className='flex items-center p-2 text-gray-100 rounded-lg hover:bg-[#833b77] group cursor-pointer'
+            className='flex items-center p-2 text-gray-100 rounded-lg hover:bg-[#174942] group cursor-pointer'
             onClick={() => {
               router.push('/');
               handleLogOut();

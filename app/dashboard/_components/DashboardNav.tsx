@@ -3,7 +3,12 @@
 // import useOutsideClick from '@/hooks/useOutsideClick';
 // import { useAuthContext } from '@/lib/contexts/auth';
 import React, { Dispatch, SetStateAction } from 'react';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from '@radix-ui/react-dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@radix-ui/react-dropdown-menu';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuthContext } from '@/rest/context/auth';
@@ -18,11 +23,11 @@ export function DashboardNav({
 }) {
   const router = useRouter();
   const { user, handleLogOut } = useAuthContext();
-  const userIsClient = user?.roles.includes;
+  // const userIsClient = user?.roles.includes;
   // const initials =
   //   (user?.FirstName?.slice(0, 1) as string) || '' + user?.LastName?.slice(0, 1) || '';
 
-  const devEnv = process.env.NODE_ENV === 'development';
+  // const devEnv = process.env.NODE_ENV === 'development';
 
   const ref = useOutsideClick(() => setSbar(false));
 
@@ -71,11 +76,11 @@ export function DashboardNav({
             </div>
             <div className='flex items-center'>
               <div className='flex items-center ms-3'>
-                {devEnv && (
+                {/* {devEnv && (
                   <div className='mr-6 text-xs w-max py-1 px-3 rounded-full bg-blue-200'>
                     {userIsClient ? 'client' : 'influencer'}
                   </div>
-                )}
+                )} */}
 
                 <DropdownMenu>
                   {/* <DropdownMenuTrigger asChild>
@@ -123,6 +128,21 @@ export function DashboardNav({
                 </DropdownMenu>
 
                 <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <div>
+                      <button
+                        type='button'
+                        className='flex text-sm bg-pink-500 rounded-full focus:ring-4 focus:ring-gray-300 '
+                        aria-expanded='false'
+                        data-dropdown-toggle='dropdown-user'
+                      >
+                        <span className='sr-only'>Open user menu</span>
+                        <div className='w-8 h-8 rounded-full text-white flex justify-center items-center uppercase'>
+                          {user?.email?.slice(0, 2)}
+                        </div>
+                      </button>
+                    </div>
+                  </DropdownMenuTrigger>
                   {/* <DropdownMenuTrigger asChild>
                     <div>
                       <button

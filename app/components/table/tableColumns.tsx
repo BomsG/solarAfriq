@@ -84,6 +84,8 @@ export const allTechniciansCol = (
               ? 'text-red-400'
               : row.original.status === 'accepted'
               ? 'text-green-400'
+              : row.original.status === 'pending'
+              ? 'text-orange-300'
               : 'text-gray-300'
           } text-[12px] `}
         >
@@ -91,6 +93,8 @@ export const allTechniciansCol = (
             ? 'ACCEPTED'
             : row.original.status === 'rejected'
             ? 'REJECTED'
+            : row.original.status === 'pending'
+            ? 'PENDING'
             : 'N/A'}
         </span>
       );

@@ -27,7 +27,7 @@ const tiles: DashboardTile[] = [
     progress: 12,
     color: 'bg-[#E57373]',
     icon: <BiCartDownload />,
-    href: '/dashboard/orders',
+    href: '/admin-dashboard/orders',
   },
   {
     title: 'Products',
@@ -36,7 +36,7 @@ const tiles: DashboardTile[] = [
     progress: 32,
     color: 'bg-[#4DB6AC]',
     icon: <AiOutlineProduct />,
-    href: '/dashboard/products',
+    href: '/admin-dashboard/products',
   },
   {
     title: 'Technicians',
@@ -45,7 +45,7 @@ const tiles: DashboardTile[] = [
     progress: 80,
     color: 'bg-[#F4511E]',
     icon: <FaScrewdriver />,
-    href: '/dashboard/technicians',
+    href: '/admin-dashboard/technicians',
   },
   // {
   //   title: 'Profile',

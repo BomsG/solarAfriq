@@ -1,10 +1,16 @@
-import { SocialMediaAccount } from '@/components/customInputs/addSocialMedia';
-
 export type User = {
-  _id: string;
+  id: string;
+  name: string;
   email: string;
+  phone: string;
+  state: string;
+  city: string;
+  address: string;
+  profile: string;
+  idDoc: string;
   roles: string[];
   isVerified: boolean;
+  technicianStatus: string;
 };
 
 export interface IAuthContextProps {

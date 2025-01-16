@@ -118,7 +118,7 @@ export default function Nav() {
                   {user.email.slice(0, 2)}
                 </Link>
               ) : (
-                <Link href='/login' className='text-white font-semibold'>
+                <Link href='/login' className='text-white font-medium'>
                   Login
                 </Link>
               )}
