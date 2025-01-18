@@ -217,7 +217,17 @@ export default function Settings() {
           <SettingsField title='Full Name' name='name' formik={formik} />
           <SettingsField title='Email' name='email' formik={formik} />
           <SettingsField title='Phone' name='phone' formik={formik} />
-          <SettingsField title='State' name='state' formik={formik} />
+          <div className='bg-white-400 py-2 sm:p-4 border-b-[1px] border-gray-200'>
+            <div className='flex flex-col min-[1050px]:flex-row'>
+              <div className='title w-full sm:w-[350px]'>
+                <h1 className='text-[14px]'>State</h1>
+              </div>
+
+              <div className='input-field w-full sm:w-[350px]'>
+                <TextField name='state' placeholder='' formik={formik} />
+              </div>
+            </div>
+          </div>
           <SettingsField title='City' name='city' formik={formik} />
           <SettingsField title='Address' name='address' formik={formik} />
 

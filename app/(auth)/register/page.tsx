@@ -10,6 +10,7 @@ import PublicLayout from '@/app/components/layout/publicLayout';
 import { TextField } from '@/app/components/molecules/textField';
 import { DashButton } from '@/app/components/molecules/dashButton';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const Register: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -53,6 +54,13 @@ const Register: React.FC = () => {
               </section>
 
               <DashButton loading={loading} title='Submit' />
+
+              <div className='text-center text-[14px] mt-4'>
+                Already have an account?
+                <Link href='/login' className='ml-2 text-blue-400'>
+                  Login here
+                </Link>
+              </div>
             </form>
           </div>
         </div>

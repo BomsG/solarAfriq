@@ -11,6 +11,7 @@ import { TextField } from '@/app/components/molecules/textField';
 import { DashButton } from '@/app/components/molecules/dashButton';
 import { useAuthContext } from '@/rest/context/auth';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const Login: React.FC = () => {
   const { handleSetToken, handleSetUser } = useAuthContext();
@@ -66,6 +67,13 @@ const Login: React.FC = () => {
               </section>
 
               <DashButton loading={loading} title='Submit' />
+
+              <div className='text-center text-[14px] mt-4'>
+                Don&apos;t have an account?
+                <Link href='/register' className='ml-2 text-blue-400'>
+                  Register here
+                </Link>
+              </div>
             </form>
           </div>
         </div>

@@ -36,5 +36,5 @@ export const states = [
   { label: 'Taraba', value: 'taraba' },
   { label: 'Yobe', value: 'yobe' },
   { label: 'Zamfara', value: 'zamfara' },
-  { label: 'FCT', value: 'fct' },
+  { label: 'Abuja', value: 'abuja' },
 ];

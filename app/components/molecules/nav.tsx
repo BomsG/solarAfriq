@@ -50,11 +50,11 @@ export default function Nav() {
     //   href: '/contact',
     //   title: 'Contact',
     // },
-    {
-      id: 5,
-      href: '/technician',
-      title: 'Technician',
-    },
+    // {
+    //   id: 5,
+    //   href: '/technician',
+    //   title: 'Technician',
+    // },
   ];
 
   return (
@@ -99,7 +99,7 @@ export default function Nav() {
                 <Cart count={itemCount} />
               </Link>
               <div className={`hidden min-[1000px]:flex `}>
-                <Link href='/product'>
+                <Link href='/installer'>
                   <Button
                     spanContent={<span className='min-[1000px]:text-[14px] '>Find Installer</span>}
                   />
