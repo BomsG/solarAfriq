@@ -24,6 +24,8 @@ import { DashButton } from '@/app/components/molecules/dashButton';
 import ImageUploadModal from '@/app/components/molecules/imageUpload';
 import { InfoIcon, UploadCloud } from 'lucide-react';
 import { MultiselectField } from '@/app/components/molecules/multiselectField';
+import { SelectField } from '@/app/components/molecules/selectField';
+import { states } from '@/rest/mock/mockData';
 
 const SettingsItems = ({ children }: { children: ReactNode }) => {
   return (
@@ -64,6 +66,8 @@ export default function Settings() {
   const [openTech, setOpenTech] = useState(false);
   const { user, handleSetUser } = useAuthContext();
 
+  console.log(user);
+
   const formik = useFormik({
     initialValues: {
       name: user?.name || '',
@@ -84,8 +88,8 @@ export default function Settings() {
         state: values?.state,
         city: values?.city,
         address: values?.address,
-        profile: avatar,
-        idDoc: idDoc,
+        profile: avatar || user?.profile,
+        idDoc: idDoc || user?.idDoc,
       };
 
       try {
@@ -155,7 +159,7 @@ export default function Settings() {
         setOpenTech(false);
         toast.success(res.data?.message);
       } catch (err: any) {
-        toast.error(err?.response?.data?.message);
+        toast.error(err?.response?.data?.message, { autoClose: 5000 });
       } finally {
         setLoading(false);
       }
@@ -169,7 +173,6 @@ export default function Settings() {
         <div className='flex bg-[#F9FAFB] p-4 border-b-[1px] border-gray-200 font-semibold justify-between'>
           <div className='border-r-[1px] border-gray-200 pr-6 text-[#b8bfcb]'>Update Profile</div>
           {user?.technicianStatus === 'pending' ? (
-            // <div>Your is awaiting approval</div>
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger>
@@ -180,8 +183,8 @@ export default function Settings() {
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
-          ) : user?.technicianStatus === 'approved' ? (
-            <div className='text-xs w-max py-1 px-3 rounded-full bg-blue-200'>
+          ) : user?.technicianStatus === 'accepted' ? (
+            <div className='text-xs w-max py-1 px-3 rounded-full bg-blue-200 text-blue-400'>
               Approved Technician
             </div>
           ) : (
@@ -224,7 +227,7 @@ export default function Settings() {
               </div>
 
               <div className='input-field w-full sm:w-[350px]'>
-                <TextField name='state' placeholder='' formik={formik} />
+                <SelectField name='state' options={states} formik={formik} />
               </div>
             </div>
           </div>

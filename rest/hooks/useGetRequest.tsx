@@ -4,7 +4,7 @@ import { useAuthContext } from '../context/auth';
 import { toast } from 'react-toastify';
 // import { useRouter } from 'next/navigation';
 
-export default function useGetReq(url: string) {
+export default function useGetReq(url: string, trigger?: boolean) {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
@@ -12,6 +12,8 @@ export default function useGetReq(url: string) {
   // const router = useRouter();
 
   const fetchData = useCallback(async () => {
+    if (trigger === false) return;
+
     setIsLoading(true);
     setError(null);
 
@@ -35,7 +37,7 @@ export default function useGetReq(url: string) {
     } finally {
       setIsLoading(false);
     }
-  }, [url, token]);
+  }, [url, token, trigger]);
 
   useEffect(() => {
     fetchData();

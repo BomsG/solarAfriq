@@ -27,7 +27,7 @@ const Technician: React.FC = () => {
     onSubmit: async (values, { resetForm }) => {
       try {
         setLoading(true);
-        const res = await api.post('/technician', values);
+        const res = await api.post('/technicia', values);
         toast.success(res?.data?.message);
         resetForm();
       } catch (error: any) {

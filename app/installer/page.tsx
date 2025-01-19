@@ -31,12 +31,15 @@ const FindInstaller = () => {
     city: '',
     role: '',
     keyword: '',
+    // search: false,
   });
 
   // Fetch data with useGetReq
   const { data: products, isLoading: loading } = useGetReq(
     `/technician?state=${queryParams.state}&city=${queryParams.city}&role=${queryParams.role}&keyword=${queryParams.keyword}`
   );
+
+  console.log(products?.data);
 
   // Formik configuration
   const formik = useFormik({
@@ -48,6 +51,7 @@ const FindInstaller = () => {
       role: '',
       // projectDetails: '',
       keyword: '',
+      // search: false,
     },
     validationSchema: Yup.object({
       name: Yup.string(),
@@ -55,6 +59,7 @@ const FindInstaller = () => {
       state: Yup.string(),
       city: Yup.string(),
       role: Yup.string(),
+      // search: Yup.boolean(),
       // projectDetails: Yup.string(),
     }),
     onSubmit: (values) => {
@@ -64,6 +69,7 @@ const FindInstaller = () => {
         city: values.city || '',
         role: values.role || '',
         keyword: values.keyword || '',
+        // search: values.search || false,
       });
     },
   });
@@ -93,8 +99,6 @@ const FindInstaller = () => {
       }
     },
   });
-
-  console.log(products);
 
   return (
     <PublicLayout>
@@ -128,7 +132,11 @@ const FindInstaller = () => {
               formik={formik}
             />
 
-            <DashButton loading={loading} title='Search' />
+            <DashButton
+              loading={loading}
+              title='Search'
+              // onClick={() => setQueryParams({ ...queryParams, search: true })}
+            />
           </form>
 
           {/* Installers List */}
