@@ -235,7 +235,9 @@ export default function Settings() {
           <SettingsField title='Address' name='address' formik={formik} />
 
           <div className='bg-white-400 py-2 sm:p-4 border-b-[1px] border-gray-200 sm:max-w-[50vw]'>
-            <label className='block mb-2 text-sm font-medium text-gray-900'>Upload ID (NIN)</label>
+            <label className='block mb-2 text-sm font-medium text-gray-900'>
+              Upload ID (NIN) <span className='text-[10px] ml-2'>(for technicians only)</span>
+            </label>
             <div className='flex flex-col sm:flex-row justify-start gap-4 sm:gap-12'>
               <button
                 className='px-2 py-1 bg-blue-200 rounded-sm text-xs h-8 w-48 flex items-center gap-3'
