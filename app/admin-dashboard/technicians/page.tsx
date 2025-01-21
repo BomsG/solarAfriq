@@ -15,11 +15,11 @@ import { toast } from 'react-toastify';
 
 export default function Technicians() {
   const router = useRouter();
-  const { data: tech, isLoading, refetch } = useGetReq(`/technician`);
+  const { data: tech, isLoading, refetch } = useGetReq(`/technician/admin`);
   const techniciansData = tech?.data?.data?.map((tec: any) => ({
     technicianId: tec._id,
     email: tec.email,
-    location: capitalizeFirstLetter(tec.location),
+    location: capitalizeFirstLetter(tec.address + ', ' + tec.city + ', ' + tec.state),
     role: capitalizeFirstLetter(tec.role),
     createdAt: readableDate(tec.createdAt),
     phone: tec.phone,

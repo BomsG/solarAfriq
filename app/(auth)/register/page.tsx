@@ -2,34 +2,34 @@
 
 'use client';
 
-import PublicLayout from '../components/layout/publicLayout';
 import { useState } from 'react';
 import { useFormik } from 'formik';
 import { toast } from 'react-toastify';
 import api from '@/rest/Auth/axios';
-import { TextField } from '../components/molecules/textField';
-import { DashButton } from '../components/molecules/dashButton';
-import { SelectField } from '../components/molecules/selectField';
-import { states } from '@/rest/mock/mockData';
-import { PhoneNumberField } from '../components/molecules/phoneNumberField';
+import PublicLayout from '@/app/components/layout/publicLayout';
+import { TextField } from '@/app/components/molecules/textField';
+import { DashButton } from '@/app/components/molecules/dashButton';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
-const Technician: React.FC = () => {
+const Register: React.FC = () => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
   const formik = useFormik({
     initialValues: {
-      name: '',
       email: '',
-      phone: '',
-      location: '',
-      role: '',
+      password: '',
     },
     enableReinitialize: true,
     onSubmit: async (values, { resetForm }) => {
       try {
         setLoading(true);
-        const res = await api.post('/technicia', values);
+        const res = await api.post('/register', values);
+
         toast.success(res?.data?.message);
         resetForm();
+        router.push('/verify-email');
       } catch (error: any) {
         toast.error(error?.response?.data?.message);
       } finally {
@@ -46,25 +46,21 @@ const Technician: React.FC = () => {
             <form onSubmit={formik.handleSubmit}>
               <section className='flex flex-col gap-3 mb-8'>
                 <div className='flex flex-col mb-4'>
-                  <h2 className='font-bold text-lg'>Technician application form</h2>
-                  <p className='text-sm'>Fill this form and we&apos;ll get back to you shortly</p>
+                  <h2 className='font-bold text-lg'>Register</h2>
+                  <p className='text-sm'>Enter your details to get started</p>
                 </div>
-                <TextField label='Name' name='name' formik={formik} />
                 <TextField label='Email' name='email' formik={formik} />
-                <PhoneNumberField label='Phone number' name='phone' formik={formik} />
-                <SelectField label='Location' name='location' options={states} formik={formik} />
-                <SelectField
-                  label='Role'
-                  name='role'
-                  options={[
-                    { label: 'Installer', value: 'installer' },
-                    { label: 'Electrician', value: 'electrician' },
-                  ]}
-                  formik={formik}
-                />
+                <TextField label='Password' name='password' type='password' formik={formik} />
               </section>
 
               <DashButton loading={loading} title='Submit' />
+
+              <div className='text-center text-[14px] mt-4'>
+                Already have an account?
+                <Link href='/login' className='ml-2 text-blue-400'>
+                  Login here
+                </Link>
+              </div>
             </form>
           </div>
         </div>
@@ -73,4 +69,4 @@ const Technician: React.FC = () => {
   );
 };
 
-export default Technician;
+export default Register;
