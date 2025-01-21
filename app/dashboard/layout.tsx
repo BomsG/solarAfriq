@@ -1,40 +1,22 @@
 'use client';
 
-import { LogOut } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import Image from 'next/image';
-import logo from '../images/logo-clean.png';
 import { useEffect, useState } from 'react';
-import { useAuthContext } from '@/rest/context/auth';
-import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
+import { useAuthContext } from '@/rest/context/auth';
+import { DashboardSidebar } from './_components/DashboardSidebar';
+import { DashboardNav } from './_components/DashboardNav';
 
-// interface UpdaterContextType {
-//   updateTable: boolean;
-//   setUpdateTable: Dispatch<SetStateAction<boolean>>;
-// }
-
-// const UpdaterContext = createContext<UpdaterContextType>({
-//   updateTable: false,
-//   setUpdateTable: () => {},
-// });
-
-export default function DashLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const { user, pageIsLoaded } = useAuthContext();
   const router = useRouter();
-  const { user, handleLogOut, pageIsLoaded } = useAuthContext();
+  const [sbar, setSbar] = useState(false);
   const [isClientReady, setIsClientReady] = useState(false);
-  // const [updateTable, setUpdateTable] = useState(false);
 
   useEffect(() => {
     setIsClientReady(true);
 
     if (!user && pageIsLoaded) {
-      toast.error("You're not logged in. Redirecting...");
+      // toast.error("You're not logged in. Redirecting...");
       router.push('/login');
     }
   }, [user, pageIsLoaded, router]);
@@ -48,41 +30,14 @@ export default function DashLayout({
   }
 
   return (
-    <div className='bg-gray-50'>
-      <header className='sticky top- z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60'>
-        <div className='containe flex h-20 items-center justify-between px-1 sm:px-10'>
-          <div className='fle items-center gap-2'>
-            <Link href='/'>
-              <Image
-                src={logo}
-                alt='logo'
-                width={80}
-                height={54}
-                sizes='(max-width: 768px) 50px, 80px'
-              />
-            </Link>
-          </div>
-          <Button
-            variant='ghost'
-            onClick={() => {
-              handleLogOut();
-              router.push('/login');
-            }}
-          >
-            <LogOut className='h-4 w-4' />
-            <span className=''>Logout</span>
-          </Button>
-        </div>
-      </header>
-      {/* <UpdaterContext.Provider value={{ updateTable, setUpdateTable }}> */}
-      {children}
-      {/* </UpdaterContext.Provider> */}
-    </div>
+    <>
+      <div className='fixe'>
+        <DashboardSidebar sbar={sbar} setSbar={setSbar} />
+        <main className='bg-[#F9FAFB] h-full min-h-screen p-[20px] sm:ml-64 mt-[60px] z-1 relative'>
+          {children}
+        </main>
+        <DashboardNav sbar={sbar} setSbar={setSbar} />
+      </div>
+    </>
   );
 }
-
-// export const useUpdaterContext = () => {
-//   const context = useContext(UpdaterContext);
-
-//   return context;
-// };

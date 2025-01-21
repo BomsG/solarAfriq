@@ -10,6 +10,7 @@ import Button from '../atoms/button';
 import Cart from '../atoms/cart';
 import { useCart } from '@/rest/hooks/useCart';
 import Hamburger from '../atoms/hamburger';
+import { useAuthContext } from '@/rest/context/auth';
 
 interface ListItem {
   id: number;
@@ -22,6 +23,7 @@ export default function Nav() {
   const path = usePathname();
   // const ref = useOutsideClick(() => setOpenMenu(false));
   const { itemCount } = useCart();
+  const { user } = useAuthContext();
 
   useEffect(() => {
     setOpenMenu(false);
@@ -48,11 +50,11 @@ export default function Nav() {
     //   href: '/contact',
     //   title: 'Contact',
     // },
-    {
-      id: 5,
-      href: '/technician',
-      title: 'Technician',
-    },
+    // {
+    //   id: 5,
+    //   href: '/technician',
+    //   title: 'Technician',
+    // },
   ];
 
   return (
@@ -97,7 +99,7 @@ export default function Nav() {
                 <Cart count={itemCount} />
               </Link>
               <div className={`hidden min-[1000px]:flex `}>
-                <Link href='/product'>
+                <Link href='/installer'>
                   <Button
                     spanContent={<span className='min-[1000px]:text-[14px] '>Find Installer</span>}
                   />
@@ -106,6 +108,20 @@ export default function Nav() {
             </div>
             <div className='min-[1000px]:hidden'>
               <Hamburger onClick={() => setOpenMenu(!openMenu)} />
+            </div>
+            <div className='flex justify-center items-center'>
+              {user ? (
+                <Link
+                  href='/dashboard'
+                  className='w-8 h-8 rounded-full bg-green-200 text-green-900 flex justify-center items-center uppercase'
+                >
+                  {user.email.slice(0, 2)}
+                </Link>
+              ) : (
+                <Link href='/login' className='text-white font-medium'>
+                  Login
+                </Link>
+              )}
             </div>
           </div>
 

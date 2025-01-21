@@ -9,40 +9,25 @@ import api from '@/rest/Auth/axios';
 import PublicLayout from '@/app/components/layout/publicLayout';
 import { TextField } from '@/app/components/molecules/textField';
 import { DashButton } from '@/app/components/molecules/dashButton';
-import { useAuthContext } from '@/rest/context/auth';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
-const Login: React.FC = () => {
-  const { handleSetToken, handleSetUser } = useAuthContext();
+const VerifyEmail: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      token: '',
     },
     enableReinitialize: true,
     onSubmit: async (values, { resetForm }) => {
       try {
         setLoading(true);
-        const res = await api.post('/login', values);
+        const res = await api.post('/verify-email', values);
 
-        if (res?.data?.token) {
-          handleSetToken(res?.data?.token);
-          try {
-            const user = await api('/user');
-            handleSetUser(user?.data?.data);
-            toast.success('Login successful');
-            router.push('/dashboard/settings');
-            resetForm();
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          } catch (error: any) {
-            toast.error('Unable to fetch user');
-            // toast.error(error?.respose?.data?.message);
-          }
-        }
+        toast.success(res?.data?.message);
+        resetForm();
+        router.push('/login');
       } catch (error: any) {
         toast.error(error?.response?.data?.message);
       } finally {
@@ -59,21 +44,13 @@ const Login: React.FC = () => {
             <form onSubmit={formik.handleSubmit}>
               <section className='flex flex-col gap-3 mb-8'>
                 <div className='flex flex-col mb-4'>
-                  <h2 className='font-bold text-lg'>Login</h2>
-                  <p className='text-sm'>Log into your dashboard</p>
+                  <h2 className='font-bold text-lg'>Verify Email</h2>
+                  <p className='text-sm'>Enter the code you received in your email</p>
                 </div>
-                <TextField label='Email' name='email' formik={formik} />
-                <TextField type='password' label='Password' name='password' formik={formik} />
+                <TextField label='Verification code' name='token' formik={formik} />
               </section>
 
               <DashButton loading={loading} title='Submit' />
-
-              <div className='text-center text-[14px] mt-4'>
-                Don&apos;t have an account?
-                <Link href='/register' className='ml-2 text-blue-400'>
-                  Register here
-                </Link>
-              </div>
             </form>
           </div>
         </div>
@@ -82,4 +59,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default VerifyEmail;
