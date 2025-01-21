@@ -1,6 +1,7 @@
 'use client';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { ColumnDef } from '@tanstack/react-table';
 
@@ -49,7 +50,10 @@ export const allTechniciansCol = (
     accessorKey: 'email',
     header: 'Email',
   },
-
+  {
+    accessorKey: 'phone',
+    header: 'Phone',
+  },
   {
     accessorKey: 'location',
     header: 'Location',
@@ -169,6 +173,87 @@ export const allProductsCol = (
       );
     },
   },
+  // {
+  //   accessorKey: 'edit',
+  //   header: '',
+  //   cell: ({ row }) => (
+  //     <Link href={`/dashboard/products/${row.original.id}`}>
+  //       <span className='text-blue-400 underline'>edit</span>
+  //     </Link>
+  //   ),
+  // },
+];
+
+export const allOrdersCol = (
+  handleEdit: (id: string) => void,
+  handleDelete: (id: string, name: string) => void
+): ColumnDef<ProductsProps>[] => [
+  // {
+  //   accessorKey: 'id',
+  //   header: '',
+  //   cell: () => null,
+  // },
+
+  {
+    accessorKey: 'name',
+    header: 'Customer Name',
+  },
+  {
+    accessorKey: 'email',
+    header: 'Email',
+  },
+  {
+    accessorKey: 'address',
+    header: 'Address',
+  },
+  {
+    accessorKey: 'items',
+    header: 'No. of Items',
+  },
+  {
+    accessorKey: 'status',
+    header: 'Status',
+  },
+  {
+    accessorKey: 'createdAt',
+    header: 'Order Date',
+  },
+  // {
+  //   accessorKey: 'action',
+  //   header: '',
+  //   cell: ({ row }) => {
+  //     return (
+  //       <DropdownMenu>
+  //         <DropdownMenuTrigger asChild>
+  //           <button className='h-8  p-0 focus:outline-none text-gray-500'>
+  //             <span className='sr-only'>Open menu</span>
+  //             {/* <Ellipsis size={20} /> */}
+  //             <div className='flex items-center gap-4 border rounded-md bg-white py-1 px-2'>
+  //               <span>More</span> <ChevronDown size={20} />
+  //             </div>
+  //           </button>
+  //         </DropdownMenuTrigger>
+  //         <DropdownMenuContent
+  //           sideOffset={5}
+  //           className='bg-white border rounded-md shadow-lg w-28 focus:outline-none'
+  //         >
+  //           <DropdownMenuItem
+  //             className='cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none '
+  //             onClick={() => handleEdit(row.original.id)}
+  //           >
+  //             Edit
+  //           </DropdownMenuItem>
+  //           <DropdownMenuItem
+  //             className='cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none'
+  //             onClick={() => handleDelete(row.original.id, row.original.name)}
+  //           >
+  //             Delete
+  //           </DropdownMenuItem>
+  //         </DropdownMenuContent>
+  //       </DropdownMenu>
+  //     );
+  //   },
+  // },
   // {
   //   accessorKey: 'edit',
   //   header: '',

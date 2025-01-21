@@ -6,7 +6,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  // DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
@@ -25,9 +24,11 @@ import { MultiselectField } from '../molecules/multiselectField';
 export default function AddProductModal({
   openProd,
   setOpenProd,
+  refetch,
 }: {
   openProd: boolean;
   setOpenProd: any;
+  refetch?: any;
 }) {
   const [showModal, setShowModal] = useState(false);
   const [showImage, setShowImage] = useState('');
@@ -49,16 +50,15 @@ export default function AddProductModal({
         setLoading(true);
         const res = await api.post('/product', payload);
         toast.success(res?.data?.message);
-        // console.log(res);
         setOpenProd(false);
+        setShowImage('');
         resetForm();
+        refetch();
       } catch (error: any) {
         toast.error(error?.response?.data?.message);
       } finally {
         setLoading(false);
       }
-
-      // console.log(payload);
     },
   });
 
@@ -79,18 +79,7 @@ export default function AddProductModal({
             <TextField label='Name' name='name' formik={formik} />
             <TextField label='Price' name='price' formik={formik} />
             <TextArea label='Description' name='description' formik={formik} />
-            {/* <SelectField
-              label='Colour'
-              name='colour'
-              options={[
-                { label: 'Gray', value: 'gray' },
-                { label: 'Pink', value: 'pink' },
-                { label: 'Black', value: 'black' },
-                { label: 'Blue', value: 'blue' },
-                { label: 'Green', value: 'green' },
-              ]}
-              formik={formik}
-            /> */}
+
             <MultiselectField
               label='Colour'
               name='colour'
@@ -104,14 +93,13 @@ export default function AddProductModal({
               formik={formik}
             />
 
-            {/* <TextField label='Image Link' name='imageUrl' formik={formik} /> */}
-
             <div className=''>
               <label className='block mb-2 text-sm font-medium text-gray-900'>Image</label>
               <div className='flex justify-between'>
                 <button
                   className='px-2 py-1 bg-blue-200 rounded-sm text-xs h-8 flex items-center gap-3'
                   onClick={() => setShowModal(true)}
+                  type='button'
                 >
                   <UploadCloud size={14} /> {!!showImage ? 'Reupload Image' : 'Upload Image'}
                 </button>
@@ -127,10 +115,7 @@ export default function AddProductModal({
           </section>
 
           <DialogFooter className='mt-8'>
-            {/* <BamButton title='Submit' loading={loading} /> */}
-            {/* <Button loading={loading}>Add Product</Button> */}
-            <DashButton loading={loading} title='Add Product' />
-            {/* <DashButton title='Add Product' /> */}
+            <DashButton loading={loading} button='submit' title='Add Product' />
           </DialogFooter>
         </form>
       </DialogContent>

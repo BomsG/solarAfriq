@@ -21,21 +21,23 @@ export default function DeleteProductModal({
   setOpenProd,
   id,
   name,
+  refetch,
 }: {
   openProd: boolean;
   setOpenProd: any;
   id: string;
   name: string;
+  refetch?: any;
 }) {
   const [loading, setLoading] = useState(false);
 
   const handleDelete = async (id: string) => {
-    // console.log(id);
     try {
       setLoading(true);
       const res = await api.delete(`/product/${id}`);
       toast.success(res?.data?.message);
       setOpenProd(false);
+      refetch();
     } catch (error: any) {
       toast.error(error?.response?.data?.message);
     } finally {
@@ -51,7 +53,6 @@ export default function DeleteProductModal({
           <DialogDescription className='hidden'></DialogDescription>
         </DialogHeader>
         <div className='w-full h-[.8px] my-1 bg-slate-200'></div>
-        {/* <form onSubmit={formik.handleSubmit}> */}
         <section className='flex flex-col'>
           <h4>Are you sure you want to delete this product?</h4> <br />
           <p className='text-red-300 font-bold'>{name}</p>
@@ -65,7 +66,6 @@ export default function DeleteProductModal({
             onClick={() => handleDelete(id)}
           />
         </DialogFooter>
-        {/* </form> */}
       </DialogContent>
     </Dialog>
   );
