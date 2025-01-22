@@ -20,6 +20,17 @@ import { useState } from 'react';
 import ImageUploadModal from '../molecules/imageUpload';
 import { UploadCloud } from 'lucide-react';
 import { MultiselectField } from '../molecules/multiselectField';
+import * as Yup from 'yup';
+
+const ValidationSchema = Yup.object({
+  name: Yup.string().required('Name of product is required'),
+  price: Yup.string()
+    .matches(/^[0-9]+$/, 'Must be only digits')
+    .required('Number is required'),
+  description: Yup.string().required('Description is required'),
+  colour: Yup.mixed().required('Colour is required'),
+  imageUrl: Yup.string().required('Image is required'),
+});
 
 export default function AddProductModal({
   openProd,
@@ -41,6 +52,7 @@ export default function AddProductModal({
       colour: '',
       imageUrl: '',
     },
+    validationSchema: ValidationSchema,
     onSubmit: async (values, { resetForm }) => {
       const payload = {
         ...values,

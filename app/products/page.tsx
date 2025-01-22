@@ -12,6 +12,7 @@ import ProductSkeleton from '../components/organisms/productSkeleton';
 import ShowProductModal from '../components/organisms/showProductModal';
 import { useCart } from '@/rest/hooks/useCart';
 import { PlusCircle } from 'lucide-react';
+import { formatCurrency } from '@/rest/utils/formatCurrency';
 
 // interface Product {
 //   id: number;
@@ -71,7 +72,8 @@ const ProductPage: React.FC = () => {
                         : product.name}
                     </h2>
                     <p className='mb-2 text-sm font-medium text-gray-600'>
-                      Price: ₦{product.price}
+                      Price: {formatCurrency(product.price)}
+                      {/* Price: ₦{formatCurrency(product.price)} */}
                     </p>
                   </div>
 
