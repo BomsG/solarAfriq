@@ -1,6 +1,6 @@
 import Carousel from '../CarouselComp';
-import hero from '../../images/image1.jpg';
-import hero2 from '../../images/image2.jpg';
+// import hero from '../../images/image1.jpg';
+// import hero2 from '../../images/image2.jpg';
 import hero3 from '../../images/image3.jpg';
 import hero4 from '../../images/image4.jpg';
 import real from '../../images/real7.jpeg';
@@ -23,7 +23,7 @@ export default function CarouselSection() {
           <span className='text-green-500'>solar energy</span>
         </h1>
         <p className='mb-2 sm:mb-10 text-[14px] md:text-xl font- mt-5'>
-        We offer a range of solar materials for you to choose from.
+          We offer a range of solar materials for you to choose from.
         </p>
       </div>
       <div className='px-2 sm:px-10 md:px-[150px] object-cover'>
