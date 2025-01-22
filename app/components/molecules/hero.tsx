@@ -21,17 +21,19 @@ export default function Hero() {
             </p>
             <div className='flex flex-wrap gap-5 items-center mt-20'>
               <Link href='/installer'>
-                <button className='bg-white text-black rounded-xl px-5 py-2 text-[16px] font-semibold flex items-center gap-2'>
+                <div className='bg-white text-black rounded-xl px-5 py-2 text-[16px] font-semibold flex items-center gap-2'>
                   Find installer
                   <span className='bg-green-500 p-2 rounded-full'>
                     <ArrowRight />
                   </span>
-                </button>
+                </div>
               </Link>
-              <button className='text-[16px] font-semibold flex items-center gap-2 hover:aminate-bounce'>
-                Explore Products
-                <ArrowRight />
-              </button>
+              <Link href='/products'>
+                <div className='text-[16px] font-semibold flex items-center gap-2 hover:aminate-bounce'>
+                  Explore Products
+                  <ArrowRight />
+                </div>
+              </Link>
             </div>
           </div>
         </div>

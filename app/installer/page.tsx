@@ -39,7 +39,7 @@ const FindInstaller = () => {
     `/technician?state=${queryParams.state}&city=${queryParams.city}&role=${queryParams.role}&keyword=${queryParams.keyword}`
   );
 
-  console.log(products?.data);
+  // console.log(products?.data);
 
   // Formik configuration
   const formik = useFormik({

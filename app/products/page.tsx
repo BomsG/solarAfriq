@@ -2,7 +2,7 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PublicLayout from '../components/layout/publicLayout';
@@ -12,6 +12,10 @@ import ProductSkeleton from '../components/organisms/productSkeleton';
 import ShowProductModal from '../components/organisms/showProductModal';
 import { useCart } from '@/rest/hooks/useCart';
 import { PlusCircle } from 'lucide-react';
+import { formatCurrency } from '@/rest/utils/formatCurrency';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { toast } from 'react-toastify';
+import api from '@/rest/Auth/axios';
 
 // interface Product {
 //   id: number;
@@ -21,6 +25,8 @@ import { PlusCircle } from 'lucide-react';
 // }
 
 const ProductPage: React.FC = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
   const [openProd, setOpenProd] = useState(false);
   const [mol, setMol] = useState<any>({});
 
@@ -35,6 +41,24 @@ const ProductPage: React.FC = () => {
     colour: pro.colour?.map((col: { label: string }) => col.label)?.join(', '),
     price: pro.price,
   }));
+
+  useEffect(() => {
+    const reference = searchParams.get('trxref');
+    if (reference) {
+      const verifyPayment = async () => {
+        try {
+          const res = await api.post('/payment/verify', { reference });
+
+          toast.success(res?.data?.message);
+          router.push('/products');
+        } catch (error: any) {
+          toast.error(error?.response?.data?.message || 'Verification failed');
+        }
+      };
+
+      verifyPayment();
+    }
+  }, []);
 
   return (
     <PublicLayout>
@@ -71,7 +95,8 @@ const ProductPage: React.FC = () => {
                         : product.name}
                     </h2>
                     <p className='mb-2 text-sm font-medium text-gray-600'>
-                      Price: ₦{product.price}
+                      Price: {formatCurrency(product.price)}
+                      {/* Price: ₦{formatCurrency(product.price)} */}
                     </p>
                   </div>
 

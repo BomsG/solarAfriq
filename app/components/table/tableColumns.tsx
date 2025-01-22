@@ -226,12 +226,16 @@ export const allProductsCol = (
 ];
 
 export const allOrdersCol = (handleModal: (id: string) => void): ColumnDef<OrdersProps>[] => [
-  // {
-  //   accessorKey: 'id',
-  //   header: '',
-  //   cell: () => null,
-  // },
-
+  {
+    accessorKey: 'orderId',
+    header: 'Order ID',
+    cell: () => null,
+  },
+  {
+    accessorKey: 'paymentRef',
+    header: 'Payment reference',
+    cell: () => null,
+  },
   {
     accessorKey: 'name',
     header: 'Customer Name',

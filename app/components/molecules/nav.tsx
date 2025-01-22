@@ -112,7 +112,7 @@ export default function Nav() {
             <div className='flex justify-center items-center'>
               {user ? (
                 <Link
-                  href='/dashboard'
+                  href='/dashboard/settings'
                   className='w-8 h-8 rounded-full bg-green-200 text-green-900 flex justify-center items-center uppercase'
                 >
                   {user.email.slice(0, 2)}
