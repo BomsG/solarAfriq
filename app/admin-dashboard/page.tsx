@@ -7,6 +7,7 @@ import { BiCartDownload } from 'react-icons/bi';
 import { AiOutlineProduct } from 'react-icons/ai';
 // import { BsPerson } from 'react-icons/bs';
 import { FaScrewdriver } from 'react-icons/fa';
+import { ChevronLeft } from 'lucide-react';
 
 interface DashboardTile {
   title: string;
@@ -74,26 +75,20 @@ const tiles: DashboardTile[] = [
 ];
 
 export default function Dashboard() {
-  // const { data } = useGetReq(`/technician`);
-
-  // console.log(data);
-  // useEffect(() => {
-  //   fetch('https://solar-afriq-api.onrender.com/product', {
-  //     method: 'GET',
-  //     credentials: 'include', // Include credentials
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => console.log(data))
-  //     .catch((error) => console.error('Error:', error));
-  // }, []);
-
   return (
     <div className='min-h-screen px-1 sm:px-10'>
       <main className='container py-6 mt-6 sm:mt-40'>
         <div className='mx-auto max-w-4xl'>
+          <div className='w-full flex justify-between items-center gap-8 mb-8'>
+            <h2 className='font-bold'>Admin Dashboard</h2>
+            <div className='flex gap-4'>
+              <Link href='/dashboard'>
+                <div className=' flex items-center text-[12px] bg-white p-2 rounded-md border border-gray-200 h-[32px] hover:bg-gray-100 hover:scale-105'>
+                  <ChevronLeft size={16} /> Go to user dashboard
+                </div>
+              </Link>
+            </div>
+          </div>
           <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
             {tiles.map((tile, index) => (
               <Link href={tile.href} key={tile.title}>

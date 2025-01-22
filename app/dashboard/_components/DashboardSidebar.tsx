@@ -15,6 +15,7 @@ import {
 } from 'react-icons/md';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthContext } from '@/rest/context/auth';
+import { BiCart } from 'react-icons/bi';
 
 interface MenuProps {
   id: number;
@@ -38,13 +39,13 @@ export function DashboardSidebar({
   // const userIsAdmin = user?.Role.includes(2);
 
   const navItems: MenuProps[] = [
-    // {
-    //   id: 1,
-    //   title: 'My Orders',
-    //   icon: <MdOutlineCampaign size={20} />,
-    //   notif: '',
-    //   href: '/dashboard/orders',
-    // },
+    {
+      id: 1,
+      title: 'My Orders',
+      icon: <BiCart />,
+      notif: '',
+      href: '/dashboard',
+    },
     // {
     //   id: 2,
     //   title: 'My Campaigns',
@@ -98,7 +99,7 @@ export function DashboardSidebar({
     // },
     {
       id: 7,
-      title: 'Settings',
+      title: 'Profile',
       icon: <RiSettingsFill />,
       notif: '',
       href: '/dashboard/settings',
