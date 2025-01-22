@@ -22,6 +22,8 @@ export default function Orders() {
   const { data: mol } = useGetReq(`/order/${orderId}`);
   const ordersData = orders?.data?.data?.map((pro: any) => ({
     id: pro._id,
+    orderId: pro.orderId,
+    paymentRef: pro.paymentRef,
     name: pro.customer.name,
     // email: pro.customer.email,
     phone: pro.customer.phone,
@@ -31,13 +33,13 @@ export default function Orders() {
     createdAt: readableDate(pro.createdAt),
   }));
 
+  // console.log(orders?.data?.data);
+
   const handleModal = (id: string) => {
     // console.log(id);
     setOpenModal(true);
     setOrderId(id);
   };
-
-  console.log(orders?.data);
 
   return (
     <div className='relative min-h-screen px-1 sm:px-10'>
