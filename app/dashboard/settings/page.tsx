@@ -66,7 +66,7 @@ export default function Settings() {
   const [openTech, setOpenTech] = useState(false);
   const { user, handleSetUser } = useAuthContext();
 
-  console.log(user);
+  // console.log(user);
 
   const formik = useFormik({
     initialValues: {

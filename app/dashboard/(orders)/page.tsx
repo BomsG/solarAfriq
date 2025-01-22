@@ -6,12 +6,12 @@
 import useGetReq from '@/rest/hooks/useGetRequest';
 import { DataTable } from '@/app/components/table/data-table';
 import { allOrdersCol } from '@/app/components/table/tableColumns';
-import { useRouter } from 'next/navigation';
-import { ChevronLeft } from 'lucide-react';
+// import { useRouter } from 'next/navigation';
+// import { ChevronLeft } from 'lucide-react';
 import { useState } from 'react';
 import readableDate from '@/rest/utils/readableDate';
 import { formatCurrency } from '@/rest/utils/formatCurrency';
-import ShowProductModalDB from '@/app/components/organisms/showProductModalDB';
+import ShowProductModalDBUserOnly from '@/app/components/organisms/showProductModalDBUserOnly';
 
 export default function Orders() {
   const [pageNumber, setPageNumber] = useState(1);
@@ -19,7 +19,7 @@ export default function Orders() {
 
   const [orderId, setOrderId] = useState('');
   const [openModal, setOpenModal] = useState<boolean>(false);
-  const router = useRouter();
+  // const router = useRouter();
   const { data: orders, isLoading, refetch } = useGetReq(`/order?pageNumber=${pageNumber}`);
   const { data: mol } = useGetReq(`/order/${orderId}`);
   const orderMeta = orders?.data?.meta;
@@ -43,22 +43,24 @@ export default function Orders() {
   };
 
   return (
-    <div className='relative min-h-screen px-1 sm:px-10'>
-      <main className='container py-6 mt-6 sm:mt-20'>
-        <div className='mx-auto max-w-4xl'>
-          <div className='w-full flex flex-col sm:flex-row flex-wrap gap-3'>
-            <div className='w-full flex justify-between items-center gap-8 mb-8'>
-              <h2 className='font-bold'>Orders</h2>
-              <div className='flex gap-4'>
-                <button
-                  className=' flex items-center text-[12px] bg-white p-2 rounded-md border border-gray-200 h-[32px] hover:bg-gray-100 hover:scale-105'
-                  onClick={router.back}
-                >
-                  <ChevronLeft size={16} /> Go Back
-                </button>
-              </div>
+    <main className='w-full sm:min-w-[80px] flex flex-col sm:flex-row flex-wrap gap-3'>
+      <div className='mx-auto max-w-4xl'>
+        <div className='w-full flex flex-col sm:flex-row flex-wrap gap-3'>
+          <div className='w-full flex justify-between items-center gap-8 mb-2'>
+            <h2 className='font-bold'>Orders</h2>
+            <div className='flex gap-4'>
+              {/* <button
+                className=' flex items-center text-[12px] bg-white p-2 rounded-md border border-gray-200 h-[32px] hover:bg-gray-100 hover:scale-105'
+                onClick={router.back}
+              >
+                <ChevronLeft size={16} /> Go Back
+              </button> */}
             </div>
+          </div>
 
+          {!ordersData ? (
+            <div>You do not have any order yet</div>
+          ) : (
             <DataTable
               columns={allOrdersCol(handleModal)}
               data={ordersData}
@@ -73,16 +75,16 @@ export default function Orders() {
                 },
               }}
             />
+          )}
 
-            <ShowProductModalDB
-              openProd={openModal}
-              setOpenProd={setOpenModal}
-              data={mol}
-              refetch={refetch}
-            />
-          </div>
+          <ShowProductModalDBUserOnly
+            openProd={openModal}
+            setOpenProd={setOpenModal}
+            data={mol}
+            // refetch={refetch}
+          />
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
