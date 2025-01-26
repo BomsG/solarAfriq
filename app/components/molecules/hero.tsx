@@ -16,10 +16,11 @@ export default function Hero() {
               Innovative solar solutions for sustainable living
             </h1>
             <p className='text-[14px] sm:text-[16px] md:text-[18px] w-full lg:w-[65%] mt-3 font-light'>
-               Through SolarAfriq, we aim to drive industry growth, promote sustainability, and contribute to Nigeria's energy transition.
+              Through SolarAfriq, we aim to drive industry growth, promote sustainability, and
+              contribute to Nigeria&apos;s energy transition.
             </p>
             <Link href='/about'>
-            <p className='text-sm text-green-100 font-bold mt-5'>Read More</p>
+              <p className='text-sm text-green-100 font-bold mt-5'>Read More</p>
             </Link>
             <div className='flex flex-wrap gap-5 items-center mt-20'>
               <Link href='/installer'>
