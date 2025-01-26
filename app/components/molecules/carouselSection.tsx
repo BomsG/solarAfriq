@@ -1,17 +1,24 @@
-import Carousel from '../CarouselComp';
-import hero from '../../images/image1.jpg';
-import hero2 from '../../images/image2.jpg';
-import hero3 from '../../images/image3.jpg';
+// import Carousel from '../CarouselComp';
+// import hero from '../../images/image1.jpg';
+// import hero2 from '../../images/image2.jpg';
+// import hero3 from '../../images/new2.jpeg';
 import hero4 from '../../images/image4.jpg';
+import hero5 from '../../images/real2.jpg';
+// import hero6 from '../../images/new1.jpeg';
+import real from '../../images/real7.jpeg';
+import real2 from '../../images/img1.jpeg';
 // import ArrowRight from '../atoms/arrowRight';
 import Button from '../atoms/button';
+import Carousel from './carouselComp';
 
 export default function CarouselSection() {
   const images = [
-    { src: hero, alt: 'Image 1' },
-    { src: hero2, alt: 'Image 2' },
-    { src: hero3, alt: 'Image 3' },
+    { src: real, alt: 'Image 1' },
+    { src: real2, alt: 'Image 2' },
+    // { src: hero3, alt: 'Image 3' },
     { src: hero4, alt: 'Image 3' },
+    { src: hero5, alt: 'Image 3' },
+    // { src: hero6, alt: 'Image 3' },
   ];
   return (
     <div className='mt-12 sm:mt-24'>
@@ -21,10 +28,10 @@ export default function CarouselSection() {
           <span className='text-green-500'>solar energy</span>
         </h1>
         <p className='mb-2 sm:mb-10 text-[14px] md:text-xl font- mt-5'>
-          We offer a range of panels to choose from
+          We offer a range of solar materials for you to choose from.
         </p>
       </div>
-      <div className='px-2 sm:px-10 md:px-[150px]'>
+      <div className='px-2 sm:px-10 md:px-[150px] object-cover'>
         <Carousel images={images} />
       </div>
 
