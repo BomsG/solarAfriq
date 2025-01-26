@@ -16,13 +16,16 @@ export default function Hero() {
               Innovative solar solutions for sustainable living
             </h1>
             <p className='text-[14px] sm:text-[16px] md:text-[18px] w-full lg:w-[65%] mt-3 font-light'>
-              We&apos;re committed to respecting our environment, sustaining our communities,
-              investing in our team and growing shareholder value.
+              Through SolarAfriq, we aim to drive industry growth, promote sustainability, and
+              contribute to Nigeria&apos;s energy transition.
             </p>
+            <Link href='/about'>
+              <p className='text-sm text-green-100 font-bold mt-5'>Read More</p>
+            </Link>
             <div className='flex flex-wrap gap-5 items-center mt-20'>
               <Link href='/installer'>
                 <div className='bg-white text-black rounded-xl px-5 py-2 text-[16px] font-semibold flex items-center gap-2'>
-                  Find installer
+                  Connect with solar installer
                   <span className='bg-green-500 p-2 rounded-full'>
                     <ArrowRight />
                   </span>
