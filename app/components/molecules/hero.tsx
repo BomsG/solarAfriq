@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import hero from '../../images/hero2.jpg';
+import Link from 'next/link';
 import ArrowRight from '../atoms/arrowRight';
 
 export default function Hero() {
@@ -10,25 +11,32 @@ export default function Hero() {
 
       <div className='relative h-full z-20 px-5 sm:px-10 md:px-[150px]'>
         <div className='flex flex-col justify-center items-start h-full'>
-          <div className='text-white w-full md:w-[70%]'>
+          <div className='text-white w-full min-[1024px]:w-[90%] g:w-[70%]'>
             <h1 className='text-[35px] min-[400px]:text-[35px] lg:text-[70px] font-semibold leading-[1.3]'>
               Innovative solar solutions for sustainable living
             </h1>
             <p className='text-[14px] sm:text-[16px] md:text-[18px] w-full lg:w-[65%] mt-3 font-light'>
-              We&apos;re committed to respecting our environment, sustaining our communities,
-              investing in our team and growing shareholder value.
+              Through SolarAfriq, we aim to drive industry growth, promote sustainability, and
+              contribute to Nigeria&apos;s energy transition.
             </p>
+            <Link href='/about'>
+              <p className='text-sm text-green-100 font-bold mt-5'>Read More</p>
+            </Link>
             <div className='flex flex-wrap gap-5 items-center mt-20'>
-              <button className='bg-white text-black rounded-xl px-5 py-2 text-[16px] font-semibold flex items-center gap-2'>
-                Meet installer
-                <span className='bg-green-500 p-2 rounded-full'>
+              <Link href='/installer'>
+                <div className='bg-white text-black rounded-xl px-5 py-2 text-[16px] font-semibold flex items-center gap-2'>
+                  Connect with solar installer
+                  <span className='bg-green-500 p-2 rounded-full'>
+                    <ArrowRight />
+                  </span>
+                </div>
+              </Link>
+              <Link href='/products'>
+                <div className='text-[16px] font-semibold flex items-center gap-2 hover:aminate-bounce'>
+                  Explore Products
                   <ArrowRight />
-                </span>
-              </button>
-              <button className='text-[16px] font-semibold flex items-center gap-2 hover:aminate-bounce'>
-                Explore Products
-                <ArrowRight />
-              </button>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
