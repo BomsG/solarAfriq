@@ -17,6 +17,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 // import * as Yup from 'yup';
 import { useAuthContext } from '@/rest/context/auth';
+import { formatCurrency } from '@/rest/utils/formatCurrency';
 
 export default function CartPage() {
   const [loading, setLoading] = useState(false);
@@ -73,7 +74,7 @@ export default function CartPage() {
 
   const handleConfirmOrder = async () => {
     if (!user) {
-      return toast.error('You need to be logged in to initiate an order', { autoClose: 5000 });
+      return toast.error('You need to be logged in to initiate an order', { autoClose: 3000 });
     }
     // setOpenContact(true);
     const cartDetails = cart.map((item) => {
@@ -193,7 +194,8 @@ export default function CartPage() {
                         </button>
                       </div>
                       <div className='flex justify-between items-center mt-2'>
-                        <span className='font-medium'>₦{item.price}</span>
+                        <span className='font-medium'>{formatCurrency(item.price)}</span>
+                        {/* <span className='font-medium'>₦{formatCurrency(item.price)}</span> */}
                         <select
                           className='border rounded px-2 py-1 w-16'
                           value={quantities[item.id]}
@@ -230,7 +232,7 @@ export default function CartPage() {
           <div className='my-6 space-y-3'>
             <div className='flex justify-between'>
               <span className='text-gray-600'>Subtotal</span>
-              <span className='font-medium'>₦{subTotal.toLocaleString()}</span>
+              <span className='font-medium'>{formatCurrency(subTotal)}</span>
             </div>
           </div>
 

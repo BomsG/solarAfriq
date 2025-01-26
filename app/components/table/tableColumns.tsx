@@ -42,7 +42,8 @@ export type ProductsProps = {
 export type OrdersProps = {
   id: string;
   name: string;
-  phone: string;
+  orderId: string;
+  paymentRef: string;
   items: string;
   total: any;
   status: any;
@@ -226,12 +227,28 @@ export const allProductsCol = (
 ];
 
 export const allOrdersCol = (handleModal: (id: string) => void): ColumnDef<OrdersProps>[] => [
-  // {
-  //   accessorKey: 'id',
-  //   header: '',
-  //   cell: () => null,
-  // },
-
+  {
+    accessorKey: 'orderId',
+    header: 'Order ID',
+    cell: ({ row }) => {
+      return (
+        <div className='cursor-pointer' onClick={() => handleModal(row.original.id)}>
+          {row.original.orderId}
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: 'paymentRef',
+    header: 'Payment Ref.',
+    cell: ({ row }) => {
+      return (
+        <div className='cursor-pointer' onClick={() => handleModal(row.original.id)}>
+          {row.original.paymentRef}
+        </div>
+      );
+    },
+  },
   {
     accessorKey: 'name',
     header: 'Customer Name',
@@ -243,21 +260,6 @@ export const allOrdersCol = (handleModal: (id: string) => void): ColumnDef<Order
       );
     },
   },
-  {
-    accessorKey: 'phone',
-    header: 'Phone No.',
-    cell: ({ row }) => {
-      return (
-        <div className='cursor-pointer' onClick={() => handleModal(row.original.id)}>
-          {row.original.phone}
-        </div>
-      );
-    },
-  },
-  // {
-  //   accessorKey: 'address',
-  //   header: 'Address',
-  // },
   {
     accessorKey: 'items',
     header: 'No. of Items',

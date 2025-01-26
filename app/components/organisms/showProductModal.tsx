@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 import { DashButton } from '../molecules/dashButton';
 import { useCart } from '@/rest/hooks/useCart';
+import { formatCurrency } from '@/rest/utils/formatCurrency';
 
 export default function ShowProductModal({
   openProd,
@@ -52,7 +53,9 @@ export default function ShowProductModal({
                     Colours: <span className='font-bold'>{product?.colour}</span>
                   </p>
                   <p className='text-xs sm:text-sm'>
-                    Price: <span className='font-bold text-base'>₦{product?.price}</span>
+                    Price:{' '}
+                    {/* <span className='font-bold text-base'>₦{formatCurrency(product?.price)}</span> */}
+                    <span className='font-bold text-base'>{formatCurrency(product?.price)}</span>
                   </p>
                 </div>
               </div>
