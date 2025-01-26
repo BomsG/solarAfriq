@@ -29,7 +29,7 @@ const ValidationSchema = Yup.object({
     .required('Number is required'),
   description: Yup.string().required('Description is required'),
   colour: Yup.mixed().required('Colour is required'),
-  imageUrl: Yup.string().required('Image is required'),
+  imageUrl: Yup.string(),
 });
 
 export default function AddProductModal({

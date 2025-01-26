@@ -12,6 +12,7 @@ import {
   DropdownMenuItem,
 } from '@radix-ui/react-dropdown-menu';
 import { ChevronDown, Ellipsis } from 'lucide-react';
+import { formatCurrency } from '@/rest/utils/formatCurrency';
 
 export type Payment = {
   id: string;
@@ -173,6 +174,7 @@ export const allProductsCol = (
   {
     accessorKey: 'price',
     header: 'Price',
+    cell: ({ row }) => <span className=''>{formatCurrency(Number(row.original.price))}</span>,
   },
   {
     accessorKey: 'action',
