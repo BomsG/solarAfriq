@@ -6,7 +6,7 @@ import hero4 from '../../images/image4.jpg';
 import hero5 from '../../images/real2.jpg';
 // import hero6 from '../../images/new1.jpeg';
 import real from '../../images/real7.jpeg';
-// import real2 from '../../images/img1.jpeg';
+import real2 from '../../images/img1.jpeg';
 // import ArrowRight from '../atoms/arrowRight';
 import Button from '../atoms/button';
 import Carousel from './carouselComp';
@@ -14,7 +14,7 @@ import Carousel from './carouselComp';
 export default function CarouselSection() {
   const images = [
     { src: real, alt: 'Image 1' },
-    // { src: real2, alt: 'Image 2' },
+    { src: real2, alt: 'Image 2' },
     // { src: hero3, alt: 'Image 3' },
     { src: hero4, alt: 'Image 3' },
     { src: hero5, alt: 'Image 3' },
