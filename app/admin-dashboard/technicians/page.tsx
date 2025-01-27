@@ -12,10 +12,19 @@ import { useRouter } from 'next/navigation';
 import { ChevronLeft } from 'lucide-react';
 import api from '@/rest/Auth/axios';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 export default function Technicians() {
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+
   const router = useRouter();
-  const { data: tech, isLoading, refetch } = useGetReq(`/technician/admin`);
+  const {
+    data: tech,
+    isLoading,
+    refetch,
+  } = useGetReq(`/technician/admin?pageNumber=${pageNumber}`);
+  const techMeta = tech?.data?.meta;
   const techniciansData = tech?.data?.data?.map((tec: any) => ({
     technicianId: tec._id,
     email: tec.email,
@@ -70,6 +79,15 @@ export default function Technicians() {
               <DataTable
                 columns={allTechniciansCol(handleAccept, handleReject)}
                 data={techniciansData}
+                pagination={{
+                  total: techMeta?.totalItems,
+                  current: pageNumber,
+                  pageSize: pageSize,
+                  onChange: (page, size) => {
+                    setPageNumber(page);
+                    setPageSize(size);
+                  },
+                }}
               />
             )}
           </div>
