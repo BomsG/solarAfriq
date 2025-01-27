@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import img from '../images/hero4.jpg';
+import review1 from '../images/review1.jpeg';
 
 const Review = () => {
   return (
@@ -349,8 +350,8 @@ const Review = () => {
             </h3>
             <div className='flex sm:items-center flex-col min-[400px]:flex-row justify-between gap-5 mb-4'>
               <div className='flex items-center gap-3'>
-                <Image src={img} alt='John image' className='w-8 h-8 rounded-full object-cover' />
-                <h6 className='font-semibold text-lg leading-8 text-green-500 '>John Watson</h6>
+                <Image src={review1} alt='John image' className='w-8 h-8 rounded-full object-cover' />
+                <h6 className='font-semibold text-lg leading-8 text-green-500 '>Legior Geteh</h6>
               </div>
               <p className='font-normal text-lg leading-8 text-gray-400'>Nov 01, 2023</p>
             </div>
@@ -465,9 +466,9 @@ const Review = () => {
             <div className='flex sm:items-center flex-col min-[400px]:flex-row justify-between gap-5 mb-4'>
               <div className='flex items-center gap-3'>
                 <Image src={img} alt='Robert image' className='w-8 h-8 rounded-full object-cover' />
-                <h6 className='font-semibold text-lg leading-8 text-green-500'>Robert Karmazov</h6>
+                <h6 className='font-semibold text-lg leading-8 text-green-500'>Burabari Keredei</h6>
               </div>
-              <p className='font-normal text-lg leading-8 text-gray-400'>Nov 01, 2023</p>
+              <p className='font-normal text-lg leading-8 text-gray-400'>JAN 01, 2024</p>
             </div>
             <p className='font-normal text-lg leading-8 text-gray-400 max-xl:text-justify'>
               Solar Afriq impresses with it&apos;s extensive range of solar equipment and
