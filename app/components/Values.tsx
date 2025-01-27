@@ -47,7 +47,7 @@ const Values = () => {
 
     return (
         <div className='my-20 px-5'>
-            <h1 className='text-2xl py-5 text-center'>Our Values</h1>
+            <h1 className='text-center font-bold text-2xl my-4 tracking-wide'>Our Values</h1>
             <h2 className='text-[35px] sm:text-[45px] md:text-[55px] py-5 text-center'>
                 The values that shape <br />
                 <span className='text-green-500'>everything we do</span>

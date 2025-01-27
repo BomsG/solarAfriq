@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import teamImage from '../images/real2.jpg';
-import vision from '../images/real4.jpg';
+// import vision from '../images/real4.jpg';
 import Services from '../components/Services';
 import { FaArrowRight } from 'react-icons/fa6';
 import Values from '../components/Values';
@@ -48,14 +48,14 @@ const AboutUs: React.FC = () => {
               />
             </div>
           </div>
-          <Image
+          {/* <Image
             src={vision}
             alt='Vision'
             className=' mb-[0px]  md:mb-[30px] lg:-mb-[350px] pl-0 sm:pl-20'
             width={600}
             height={400}
-          />
-          <div className='bg-black flex justify-center lg:justify-end text-white py-16 h-[100vh] lg:h-[600px]'>
+          /> */}
+          {/* <div className='bg-black flex justify-center lg:justify-end text-white py-16 h-[100vh] lg:h-[600px]'>
             <div className='pr-4 lg:pr-[100px] max-w-[500px]'>
               <h1 className='text-2xl mt-5 text-center lg:text-left'>Our Vision</h1>
               <h2 className='py-5 text-[35px] sm:text-[45px] md:text-[55px] text-center lg:text-left'>
@@ -71,6 +71,18 @@ const AboutUs: React.FC = () => {
                 consequat.
               </p>
             </div>
+          </div> */}
+          <div className='mx-0 md:mx-10'>
+            <h1 className='text-center font-bold text-2xl mb-4 tracking-wider'>ABOUT US</h1>
+            <p className='text-center text-lg leading-relaxed text-gray-700 mb-6'>Welcome to SolarAriq: an innovative platform designed to revolutionize the solar PV industry in Nigeria. We address the critical challenges within the industry by connecting skilled solar installers with quality solar PV contracts, driving sustainable growth, and promoting renewable energy adoption.
+            Nigeria&apos;s renewable energy sector holds immense potential, yet faces significant obstacles such as an unreliable grid infrastructure, limited energy access in rural areas and limited supply of skilled professionals required to drive the energy transition goals. SolarAfriq aims to bridge these gaps by providing a reliable platform that ensures high-quality solar installations while empowering local communities.
+            Whether you are looking for a solar installer, an expert solar engineer or you just want to buy solar materials for your project, solarafriq is the right place for you, we are poise to disrupt the traditional way energy is being accessed in Nigeria with our innovative solution that gives you  access to our qualified solar installers and quality solar installations while  offering values to the clients and economic empowerment to the installers. </p>
+            <h2 className='text-center font-bold text-2xl my-4 tracking-wide '>Mission</h2>
+            <p className='text-lg leading-relaxed text-gray-700 mb-6'>
+              Our mission is to empower skilled solar installers and ensure the highest standards of quality and reliability in every solar PV project. Through SolarAfriq, we aim to drive industry growth, promote sustainability, and contribute to Nigeria&apos;s energy transition.</p>
+              <h2 className='text-center font-bold text-2xl my-4 tracking-wide'>Vision</h2>
+              <p className='text-lg leading-relaxed text-gray-700 mb-6'>
+              We envision a future where renewable energy powers our daily lives and sustains the earth for future generations. By leading the way in clean energy solutions and technical services, we aspire to become Nigeria&apos;s leading renewable energy company, driving innovation and excellence in the industry.</p>
           </div>
           <Values />
           <Services />
