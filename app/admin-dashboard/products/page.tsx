@@ -5,7 +5,6 @@
 import useGetReq from '@/rest/hooks/useGetRequest';
 import { DataTable } from '@/app/components/table/data-table';
 import { allProductsCol } from '@/app/components/table/tableColumns';
-import { Spinner } from '@/app/components/molecules/spinner';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft, PlusCircle } from 'lucide-react';
 import { useState } from 'react';
@@ -14,13 +13,17 @@ import EditProductModal from '@/app/components/organisms/editProductModal';
 import DeleteProductModal from '@/app/components/organisms/deleteProductModal';
 
 export default function Products() {
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+
   const [openProd, setOpenProd] = useState(false);
   const [openEditProd, setOpenEditProd] = useState(false);
   const [openDeleteProd, setOpenDeleteProd] = useState(false);
   const [showId, setShowId] = useState('');
   const [showName, setShowName] = useState('');
   const router = useRouter();
-  const { data: products, isLoading, refetch } = useGetReq(`/product`);
+  const { data: products, isLoading, refetch } = useGetReq(`/product?pageNumber=${pageNumber}`);
+  const productMeta = products?.data?.meta;
   const productsData = products?.data?.data?.map((pro: any) => ({
     id: pro._id,
     image: pro.imageUrl,
@@ -61,13 +64,21 @@ export default function Products() {
                 </button>
               </div>
             </div>
-            {isLoading ? (
-              <div className='absolute top-[10%] left-[45%] h-screen '>
-                <Spinner size='10' color='pink' />
-              </div>
-            ) : (
-              <DataTable columns={allProductsCol(handleEdit, handleDelete)} data={productsData} />
-            )}
+
+            <DataTable
+              columns={allProductsCol(handleEdit, handleDelete)}
+              data={productsData}
+              isLoading={isLoading}
+              pagination={{
+                total: productMeta?.totalItems,
+                current: pageNumber,
+                pageSize: pageSize,
+                onChange: (page, size) => {
+                  setPageNumber(page);
+                  setPageSize(size);
+                },
+              }}
+            />
 
             <AddProductModal openProd={openProd} setOpenProd={setOpenProd} refetch={refetch} />
             <EditProductModal
