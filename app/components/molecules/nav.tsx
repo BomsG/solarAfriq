@@ -50,11 +50,11 @@ export default function Nav() {
     //   href: '/contact',
     //   title: 'Contact',
     // },
-    // {
-    //   id: 5,
-    //   href: '/technician',
-    //   title: 'Technician',
-    // },
+    {
+      id: 5,
+      href: '/technician',
+      title: 'Technician',
+    },
   ];
 
   return (
